@@ -2,7 +2,7 @@
   "@context": {
     "dpp": "https://w3id.org/dpp/v1/",
     "schema": "https://schema.org/",
-    "ace": "https://acespire.com/vocab/ace-dpp/",
+    "ace": "https://sushmitha34.github.io/DPP/ace-dpp-context.jsonld",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
 
     "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
