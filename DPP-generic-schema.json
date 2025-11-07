@@ -7,6 +7,7 @@
         "vc": "https://www.w3.org/2018/credentials#",
         "sec": "https://w3id.org/security#"
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://sushmitha34.github.io/DPP/DPP-generic-schema.json",
     "@id": "https://sushmitha34.github.io/DPP/DPP-generic-schema.json",
     "@type": "ace:AceDigitalProductPassport",
@@ -50,7 +51,6 @@
             "format": "uri"
         },
         "identification": {
-            "@type": "ace:Identification",
             "description": "Unique identity and traceability info as per ESPR Article 9.",
             "type": "object",
             "required": [
@@ -117,7 +117,7 @@
             }
         },
         "product": {
-            "@type": "ace:ProductLayer",
+    
             "description": "Product characteristics, images, and technical specifications (ESPR core Articles 5–7).",
             "type": "object",
             "required": [
@@ -358,7 +358,7 @@
             }
         },
         "economicOperators": {
-            "@type": "ace:EconomicOperators",
+            
             "description": "Chain of economic operators per ESPR Article 4.",
             "type": "array",
             "minItems": 1,
@@ -426,7 +426,7 @@
             }
         },
         "sustainability": {
-            "@type": "ace:Sustainability",
+            
             "description": "Environmental and circularity metrics — Articles 5–7 ESPR.",
             "type": "object",
             "required": [
@@ -630,7 +630,7 @@
             }
         },
         "lifecycle": {
-            "@type": "ace:Lifecycle",
+          
             "description": "Maintenance, service, and traceability records (ESPR Articles 7 & 10).",
             "type": "object",
             "properties": {
@@ -776,7 +776,7 @@
             }
         },
         "endOfLife": {
-            "@type": "ace:EndOfLife",
+          
             "description": "Recycling and disposal data (Article 8 ESPR).",
             "type": "object",
             "required": [
@@ -854,7 +854,7 @@
             }
         },
         "compliance": {
-            "@type": "ace:Compliance",
+            
             "description": "Certificates and verifiable credentials (Article 10 ESPR).",
             "type": "object",
             "properties": {
@@ -1083,7 +1083,7 @@
             }
         },
         "consumerInformation": {
-            "@type": "ace:ConsumerInfo",
+           
             "description": "Consumer and market info (Article 8 ESPR).",
             "type": "object",
             "properties": {
@@ -1167,7 +1167,7 @@
             }
         },
         "metadata": {
-            "@type": "ace:Metadata",
+           
             "description": "Access rights, registry info, and resolver (Article 10 ESPR).",
             "type": "object",
             "required": [
