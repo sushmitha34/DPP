@@ -1,3 +1,22 @@
+# Complete Corrected DPP Files (Schema + Context + Example)
+
+## Issue Identified
+
+Your JSON Schema has `@type` annotations on properties (e.g., `"@type": "ace:Identification"`), but these should NOT be in the schema - they're causing confusion between JSON Schema validation and JSON-LD semantics.
+
+## Solution
+
+**Option 1: Keep JSON Schema clean (RECOMMENDED)**
+Remove all `@type` annotations from the schema properties and define them only in the context.
+
+**Option 2: Use @type only for class definitions**
+If you want to keep `@type` in the schema, they should reference actual class/type definitions, not be mixed with property definitions.
+
+---
+
+## 1. Corrected JSON-LD Context (`ace-dpp-context.jsonld`)
+
+```json
 {
   "@context": {
     "@vocab": "https://sushmitha34.github.io/DPP/terms#",
@@ -9,6 +28,15 @@
     "sec": "https://w3id.org/security#",
     
     "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
+    "Identification": "ace:Identification",
+    "ProductLayer": "ace:ProductLayer",
+    "EconomicOperators": "ace:EconomicOperators",
+    "Sustainability": "ace:Sustainability",
+    "Lifecycle": "ace:Lifecycle",
+    "EndOfLife": "ace:EndOfLife",
+    "Compliance": "ace:Compliance",
+    "ConsumerInfo": "ace:ConsumerInfo",
+    "Metadata": "ace:Metadata",
     
     "identification": "dpp:identification",
     "uniqueProductIdentifier": "dpp:uniqueProductIdentifier",
@@ -445,3 +473,38 @@
     }
   }
 }
+```
+
+## 2. Corrected JSON Schema (Remove @type from properties)
+
+In your `DPP-generic-schema.json`, **REMOVE** all the `"@type"` lines like:
+- `"@type": "ace:Identification"` 
+- `"@type": "ace:ProductLayer"`
+- `"@type": "ace:EconomicOperators"`
+- etc.
+
+These should ONLY appear in the context file, not in the JSON Schema. Here's the corrected schema structure:
+
+```json
+{
+  "@context": {
+    "dpp": "https://w3id.org/dpp/v1/",
+    "schema": "https://schema.org/",
+    "ace": "https://sushmitha34.github.io/DPP/ace-dpp-context.jsonld",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "vc": "https://www.w3.org/2018/credentials#",
+    "sec": "https://w3id.org/security#"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sushmitha34.github.io/DPP/DPP-generic-schema.json",
+  "@id": "https://sushmitha34.github.io/DPP/DPP-generic-schema.json",
+  "@type": "ace:AceDigitalProductPassport",
+  "title": "Ace Digital Product Passport (W3C + ESPR Aligned v2.0)",
+  "description": "Enhanced W3C JSON-LD schema for Ace Digital Product Passport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "@context",
+    "@type",
+    "identification",
+    "product
