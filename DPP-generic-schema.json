@@ -1,0 +1,744 @@
+{
+    
+  "@context": {
+    "dpp": "https://w3id.org/dpp/v1/",
+    "schema": "https://schema.org/",
+    "ace": "https://acespire.com/vocab/ace-dpp/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "vc": "https://www.w3.org/2018/credentials#",
+    "sec": "https://w3id.org/security#"
+  },
+
+  "@id": "https://acespire.com/schemas/ace-dpp/2.0.0/ace-dpp.jsonld",
+  "@type": "ace:AceDigitalProductPassport",
+  "title": "Ace Digital Product Passport (W3C + ESPR Aligned v2.0)",
+  "description": "Enhanced W3C JSON-LD schema for Ace Digital Product Passport — fully compliant with ESPR Articles 4-12, W3C VC Data Model 2.0, and future EU DPP Registry.",
+
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["@context", "@type", "identification", "product", "sustainability", "economicOperators", "metadata"],
+
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional reference to schema file"
+    },
+    "@context": {
+      "description": "JSON-LD context defining semantic vocabulary mappings",
+      "oneOf": [
+        { "type": "object" },
+        { "type": "array" }
+      ]
+    },
+    "@type": {
+      "description": "JSON-LD type declaration",
+      "type": "string",
+      "const": "ace:AceDigitalProductPassport"
+    },
+    "@id": {
+      "description": "Unique identifier for this DPP instance",
+      "type": "string",
+      "format": "uri"
+    },
+    "identification": {
+      "@type": "ace:Identification",
+      "description": "Unique identity and traceability info as per ESPR Article 9.",
+      "type": "object",
+      "required": ["uniqueProductIdentifier", "manufacturerName", "dataCarrierType", "productCategory"],
+      "properties": {
+        "uniqueProductIdentifier": { 
+          "type": "string",
+          "description": "Globally unique identifier (GTIN, UUID, or custom scheme)"
+        },
+        "dataCarrierType": { 
+          "type": "string", 
+          "enum": ["QR", "NFC", "RFID", "DataMatrix", "DigitalWatermark", "DotCode"],
+          "description": "Type of machine-readable data carrier per ESPR Article 9"
+        },
+        "productLevel": { 
+          "type": "string", 
+          "enum": ["item", "batch", "model"],
+          "description": "Granularity level of the passport"
+        },
+        "manufacturerName": { "type": "string" },
+        "manufacturerIdentifier": { 
+          "type": "string",
+          "description": "EORI, VAT, or other official registration number"
+        },
+        "manufacturingFacilityID": { "type": "string" },
+        "productionDate": { "type": "string", "format": "date" },
+        "productCategory": { 
+          "type": "string",
+          "description": "ESPR product group or category"
+        },
+        "batchNumber": { "type": "string" },
+        "serialNumber": { "type": "string" },
+        "linkToDigitalCopy": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "Permanent URL to this DPP"
+        }
+      }
+    },
+
+    "product": {
+      "@type": "ace:ProductLayer",
+      "description": "Product characteristics, images, and technical specifications (ESPR core Articles 5–7).",
+      "type": "object",
+      "required": ["productName", "classification", "productImage"],
+      "properties": {
+        "productName": { 
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "description": "Multilingual product name",
+              "patternProperties": {
+                "^[a-z]{2}(-[A-Z]{2})?$": { "type": "string" }
+              },
+              "examples": [{"en": "Laptop Computer", "de": "Laptop-Computer", "fr": "Ordinateur portable"}]
+            }
+          ]
+        },
+        "productDescription": { 
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}(-[A-Z]{2})?$": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "brand": { "type": "string" },
+        "modelNumber": { "type": "string" },
+        "classification": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["classificationStandard", "classificationID"],
+            "properties": {
+              "classificationStandard": { 
+                "type": "string",
+                "enum": ["GPC", "UNSPSC", "eCl@ss", "CPV", "HS", "NACE"],
+                "description": "Standard classification system"
+              },
+              "classificationID": { "type": "string" },
+              "classificationDescription": { "type": "string" }
+            }
+          }
+        },
+        "productImage": {
+          "type": "object",
+          "required": ["@type", "contentUrl"],
+          "properties": {
+            "@type": { "const": "schema:ImageObject" },
+            "contentUrl": { "type": "string", "format": "uri" },
+            "encodingFormat": { "type": "string", "examples": ["image/jpeg", "image/png"] },
+            "caption": { "type": "string" },
+            "width": { "type": "integer" },
+            "height": { "type": "integer" }
+          }
+        },
+        "physicalDimension": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "number", "description": "Width in mm" },
+            "height": { "type": "number", "description": "Height in mm" },
+            "length": { "type": "number", "description": "Length in mm" },
+            "weight": { "type": "number", "description": "Weight in grams" },
+            "volume": { "type": "number", "description": "Volume in cubic cm" }
+          }
+        },
+        "technicalSpecifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["parameter", "value"],
+            "properties": {
+              "parameter": { "type": "string" },
+              "value": {},
+              "unit": { "type": "string" },
+              "testMethod": { "type": "string" }
+            }
+          }
+        },
+        "energyEfficiencyClass": { 
+          "type": "string",
+          "pattern": "^[A-G][+]{0,3}$",
+          "description": "EU Energy Label class (A+++ to G)"
+        },
+        "durabilityExpectedLifetime": { 
+          "type": "object",
+          "properties": {
+            "value": { "type": "number" },
+            "unit": { "type": "string", "enum": ["years", "months", "cycles", "hours"] },
+            "conditions": { "type": "string" }
+          }
+        },
+        "repairabilityIndex": {
+          "type": "object",
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 10 },
+            "methodology": { "type": "string" },
+            "calculationDate": { "type": "string", "format": "date" },
+            "repairInstructionsUrl": { "type": "string", "format": "uri" },
+            "sparePartsAvailability": { 
+              "type": "object",
+              "properties": {
+                "availabilityPeriod": { "type": "string" },
+                "deliveryTime": { "type": "string" }
+              }
+            }
+          }
+        },
+        "warrantyInformation": {
+          "type": "object",
+          "properties": {
+            "period": { "type": "string", "description": "e.g., '24 months'" },
+            "coverage": { "type": "string" },
+            "termsUrl": { "type": "string", "format": "uri" },
+            "commercialGuarantee": { "type": "boolean" }
+          }
+        }
+      }
+    },
+
+    "economicOperators": {
+      "@type": "ace:EconomicOperators",
+      "description": "Chain of economic operators per ESPR Article 4.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["role", "name", "identifier"],
+        "properties": {
+          "role": { 
+            "type": "string",
+            "enum": ["manufacturer", "importer", "distributor", "authorizedRepresentative", "retailer"],
+            "description": "Role in the supply chain"
+          },
+          "name": { "type": "string" },
+          "identifier": { 
+            "type": "string",
+            "description": "EORI, VAT, DUNS, or other official ID"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "streetAddress": { "type": "string" },
+              "city": { "type": "string" },
+              "postalCode": { "type": "string" },
+              "country": { "type": "string", "pattern": "^[A-Z]{2}$" }
+            }
+          },
+          "contact": {
+            "type": "object",
+            "properties": {
+              "email": { "type": "string", "format": "email" },
+              "phone": { "type": "string" },
+              "website": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+
+    "sustainability": {
+      "@type": "ace:Sustainability",
+      "description": "Environmental and circularity metrics — Articles 5–7 ESPR.",
+      "type": "object",
+      "required": ["recycledContentPercent", "productEnvironmentalFootprint"],
+      "properties": {
+        "materialComposition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["materialName", "percentage"],
+            "properties": {
+              "materialName": { "type": "string" },
+              "casNumber": { "type": "string" },
+              "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+              "recyclable": { "type": "boolean" },
+              "renewable": { "type": "boolean" }
+            }
+          }
+        },
+        "substancesOfConcern": {
+          "type": "array",
+          "description": "REACH SVHC and other hazardous substances",
+          "items": {
+            "type": "object",
+            "required": ["substanceName"],
+            "properties": {
+              "substanceName": { "type": "string" },
+              "casNumber": { "type": "string" },
+              "ecNumber": { "type": "string" },
+              "concentration": { "type": "number", "minimum": 0, "maximum": 100 },
+              "location": { "type": "string", "description": "Where in product" },
+              "exemption": { "type": "string" }
+            }
+          }
+        },
+        "recycledContentPercent": { 
+          "type": "number", 
+          "minimum": 0, 
+          "maximum": 100,
+          "description": "Percentage of recycled materials by weight"
+        },
+        "renewableContentPercent": { 
+          "type": "number", 
+          "minimum": 0, 
+          "maximum": 100 
+        },
+        "productEnvironmentalFootprint": {
+          "type": "object",
+          "required": ["carbonFootprint"],
+          "properties": {
+            "carbonFootprint": { 
+              "type": "number",
+              "description": "Total carbon footprint in kg CO2e"
+            },
+            "unit": { "type": "string", "default": "kg CO2e" },
+            "scope": {
+              "type": "object",
+              "properties": {
+                "scope1": { "type": "number" },
+                "scope2": { "type": "number" },
+                "scope3": { "type": "number" }
+              }
+            },
+            "calculationMethod": { 
+              "type": "string",
+              "description": "Standard used (ISO 14067, PEF, GHG Protocol)"
+            },
+            "pefCompliant": { 
+              "type": "boolean",
+              "description": "Compliant with EU Product Environmental Footprint"
+            },
+            "calculationDate": { "type": "string", "format": "date" },
+            "verificationBody": { "type": "string" },
+            "pcfDataQualityRating": {
+              "type": "string",
+              "enum": ["high", "medium", "low"]
+            }
+          }
+        },
+        "waterFootprint": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "number" },
+            "unit": { "type": "string", "default": "liters" }
+          }
+        },
+        "criticalRawMaterials": {
+          "type": "array",
+          "description": "EU Critical Raw Materials List",
+          "items": { 
+            "type": "object",
+            "properties": {
+              "material": { "type": "string" },
+              "quantity": { "type": "number" },
+              "unit": { "type": "string" },
+              "origin": { "type": "string" }
+            }
+          }
+        },
+        "originOfMaterials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material": { "type": "string" },
+              "country": { "type": "string", "pattern": "^[A-Z]{2}$" },
+              "region": { "type": "string" },
+              "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+            }
+          }
+        },
+        "biodiversityImpact": {
+          "type": "object",
+          "properties": {
+            "assessment": { "type": "string" },
+            "mitigation": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "lifecycle": {
+      "@type": "ace:Lifecycle",
+      "description": "Maintenance, service, and traceability records (ESPR Articles 7 & 10).",
+      "type": "object",
+      "properties": {
+        "maintenanceInstructionsUrl": { "type": "string", "format": "uri" },
+        "maintenanceSchedule": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "interval": { "type": "string" },
+              "taskDescription": { "type": "string" },
+              "requiredParts": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "maintenanceHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["date", "description"],
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "performedBy": { "type": "string" },
+              "description": { "type": "string" },
+              "partsReplaced": { "type": "array", "items": { "type": "string" } },
+              "cost": { "type": "number" },
+              "verificationHash": { "type": "string" }
+            }
+          }
+        },
+        "traceabilityEvents": {
+          "type": "array",
+          "description": "Supply chain events (GS1 EPCIS compatible)",
+          "items": {
+            "type": "object",
+            "required": ["eventType", "timestamp"],
+            "properties": {
+              "eventType": { 
+                "type": "string",
+                "enum": ["commission", "aggregation", "transformation", "observation", "transaction", "decommission"]
+              },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "location": { "type": "string" },
+              "geoCoordinates": {
+                "type": "object",
+                "properties": {
+                  "latitude": { "type": "number" },
+                  "longitude": { "type": "number" }
+                }
+              },
+              "actor": { "type": "string" },
+              "actorIdentifier": { "type": "string" },
+              "businessStep": { "type": "string" },
+              "disposition": { "type": "string" }
+            }
+          }
+        },
+        "ownershipHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "transferDate": { "type": "string", "format": "date" },
+              "previousOwner": { "type": "string" },
+              "currentOwner": { "type": "string" },
+              "transferReason": { "type": "string", "enum": ["sale", "lease", "return", "warranty"] }
+            }
+          }
+        }
+      }
+    },
+
+    "endOfLife": {
+      "@type": "ace:EndOfLife",
+      "description": "Recycling and disposal data (Article 8 ESPR).",
+      "type": "object",
+      "required": ["endOfLifeInstructions"],
+      "properties": {
+        "endOfLifeInstructions": { 
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}(-[A-Z]{2})?$": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "recyclingInfo": { "type": "string" },
+        "recyclabilityRate": { 
+          "type": "number", 
+          "minimum": 0, 
+          "maximum": 100,
+          "description": "Percentage of product that can be recycled"
+        },
+        "dismantlingInstructions": {
+          "type": "object",
+          "properties": {
+            "instructionsUrl": { "type": "string", "format": "uri" },
+            "toolsRequired": { "type": "array", "items": { "type": "string" } },
+            "estimatedTime": { "type": "string" }
+          }
+        },
+        "reverseLogisticsInstructions": { "type": "string" },
+        "takeBackScheme": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "provider": { "type": "string" },
+            "contactUrl": { "type": "string", "format": "uri" }
+          }
+        },
+        "eprContact": { 
+          "type": "string",
+          "description": "Extended Producer Responsibility contact"
+        },
+        "wasteClassification": {
+          "type": "string",
+          "description": "EU waste code (EWC/LoW)"
+        }
+      }
+    },
+
+    "compliance": {
+      "@type": "ace:Compliance",
+      "description": "Certificates and verifiable credentials (Article 10 ESPR).",
+      "type": "object",
+      "properties": {
+        "complianceCertificates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["certificateId", "issuer", "issueDate"],
+            "properties": {
+              "certificateId": { "type": "string" },
+              "certificateType": {
+                "type": "string",
+                "enum": ["CE", "ISO", "Energy Star", "EPEAT", "Blue Angel", "EU Ecolabel", "TCO"]
+              },
+              "issuer": { "type": "string" },
+              "issueDate": { "type": "string", "format": "date" },
+              "expiryDate": { "type": "string", "format": "date" },
+              "scope": { "type": "string" },
+              "certificateUrl": { "type": "string", "format": "uri" },
+              "verificationUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "testReportReferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "reportId": { "type": "string" },
+              "testStandard": { "type": "string" },
+              "labName": { "type": "string" },
+              "labAccreditation": { "type": "string" },
+              "testDate": { "type": "string", "format": "date" },
+              "reportUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "verifiableCredentials": {
+          "type": "array",
+          "description": "W3C Verifiable Credentials Data Model 2.0",
+          "items": {
+            "type": "object",
+            "required": ["@context", "type", "issuer", "validFrom", "credentialSubject"],
+            "properties": {
+              "@context": { 
+                "type": "array",
+                "items": { "type": "string" },
+                "contains": { "const": "https://www.w3.org/ns/credentials/v2" }
+              },
+              "id": { "type": "string", "format": "uri" },
+              "type": { 
+                "type": "array",
+                "items": { "type": "string" },
+                "contains": { "const": "VerifiableCredential" }
+              },
+              "issuer": { 
+                "oneOf": [
+                  { "type": "string", "format": "uri" },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string", "format": "uri" },
+                      "name": { "type": "string" }
+                    }
+                  }
+                ]
+              },
+              "validFrom": { "type": "string", "format": "date-time" },
+              "validUntil": { "type": "string", "format": "date-time" },
+              "credentialSubject": { 
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": { "type": "string", "format": "uri" }
+                }
+              },
+              "credentialStatus": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string", "format": "uri" },
+                  "type": { "type": "string" }
+                }
+              },
+              "proof": {
+                "type": "object",
+                "required": ["type", "created", "proofPurpose", "verificationMethod"],
+                "properties": {
+                  "type": { "type": "string", "examples": ["Ed25519Signature2020", "JsonWebSignature2020"] },
+                  "created": { "type": "string", "format": "date-time" },
+                  "proofPurpose": { "type": "string", "enum": ["assertionMethod", "authentication"] },
+                  "verificationMethod": { "type": "string", "format": "uri" },
+                  "proofValue": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "conformityDeclaration": {
+          "type": "object",
+          "properties": {
+            "declarationUrl": { "type": "string", "format": "uri" },
+            "euDeclarationNumber": { "type": "string" },
+            "harmonizedStandards": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "consumerInformation": {
+      "@type": "ace:ConsumerInfo",
+      "description": "Consumer and market info (Article 8 ESPR).",
+      "type": "object",
+      "properties": {
+        "userManualUrl": { 
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            {
+              "type": "object",
+              "description": "Multilingual manuals",
+              "patternProperties": {
+                "^[a-z]{2}(-[A-Z]{2})?$": { "type": "string", "format": "uri" }
+              }
+            }
+          ]
+        },
+        "safetyInstructions": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}(-[A-Z]{2})?$": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "productImage": { "$ref": "#/properties/product/properties/productImage" },
+        "warrantyInformation": { "$ref": "#/properties/product/properties/warrantyInformation" },
+        "customerSupport": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string", "format": "email" },
+            "phone": { "type": "string" },
+            "website": { "type": "string", "format": "uri" },
+            "chatUrl": { "type": "string", "format": "uri" }
+          }
+        },
+        "marketingClaims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim": { "type": "string" },
+              "substantiation": { "type": "string" },
+              "verificationUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+
+    "metadata": {
+      "@type": "ace:Metadata",
+      "description": "Access rights, registry info, and resolver (Article 10 ESPR).",
+      "type": "object",
+      "required": ["resolverUrl", "accessRightsMetadata", "schemaVersion"],
+      "properties": {
+        "resolverUrl": { 
+          "type": "string", 
+          "format": "uri",
+          "description": "URL to resolve DPP identifier to current location"
+        },
+        "registryEntryId": { 
+          "type": "string",
+          "description": "ID in EU DPP Registry (when available)"
+        },
+        "euDppRegistryUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to EU DPP Registry entry"
+        },
+        "storageLocation": { 
+          "type": "string",
+          "description": "Where the DPP data is hosted"
+        },
+        "storageProvider": { "type": "string" },
+        "accessRightsMetadata": {
+          "type": "object",
+          "required": ["publicFields"],
+          "properties": {
+            "publicFields": { 
+              "type": "array", 
+              "items": { "type": "string" },
+              "description": "Fields visible to all users"
+            },
+            "restrictedFields": { 
+              "type": "array", 
+              "items": { "type": "string" },
+              "description": "Fields requiring authentication"
+            },
+            "regulatorAccessFields": { 
+              "type": "array", 
+              "items": { "type": "string" },
+              "description": "Fields only for market surveillance authorities"
+            },
+            "authenticationMethod": {
+              "type": "string",
+              "enum": ["OAuth2", "VerifiablePresentation", "APIKey", "mTLS"]
+            }
+          }
+        },
+        "availabilityGuarantee": { 
+          "type": "string",
+          "description": "Minimum availability period per ESPR Article 10"
+        },
+        "formatAndOntology": { 
+          "type": "string", 
+          "enum": ["JSON-LD"],
+          "description": "Data format"
+        },
+        "schemaVersion": { 
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Semantic version of this schema"
+        },
+        "lastUpdated": { "type": "string", "format": "date-time" },
+        "dataQuality": {
+          "type": "object",
+          "properties": {
+            "completeness": { "type": "number", "minimum": 0, "maximum": 100 },
+            "accuracy": { "type": "string", "enum": ["verified", "self-declared", "estimated"] },
+            "lastAuditDate": { "type": "string", "format": "date" }
+          }
+        },
+        "interoperability": {
+          "type": "object",
+          "properties": {
+            "gs1Compatible": { "type": "boolean" },
+            "epcisVersion": { "type": "string" },
+            "catenaxCompatible": { "type": "boolean" },
+            "pactCompliant": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

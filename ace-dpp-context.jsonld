@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "dpp": "https://w3id.org/dpp/v1/",
+    "schema": "https://schema.org/",
+    "ace": "https://acespire.com/vocab/ace-dpp/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
+
+    "identification": "dpp:Identification",
+    "uniqueProductIdentifier": "dpp:uniqueProductIdentifier",
+    "dataCarrierType": "dpp:dataCarrierType",
+    "productLevel": "dpp:productLevel",
+    "manufacturerName": "schema:manufacturer",
+    "manufacturerIdentifier": "schema:identifier",
+    "manufacturingFacilityID": "schema:location",
+    "productionDate": { "@id": "schema:productionDate", "@type": "xsd:date" },
+    "productCategory": "schema:category",
+    "batchNumber": "schema:batchNumber",
+    "serialNumber": "schema:serialNumber",
+    "linkToDigitalCopy": { "@id": "schema:url", "@type": "@id" },
+
+    "product": "dpp:Product",
+    "productName": "schema:name",
+    "productDescription": "schema:description",
+    "brand": "schema:brand",
+    "modelNumber": "schema:model",
+    "classification": "dpp:classification",
+    "productImage": "schema:image",
+    "physicalDimension": "schema:size",
+    "technicalSpecifications": "schema:additionalProperty",
+    "energyEfficiencyClass": "dpp:energyEfficiencyClass",
+    "durabilityExpectedLifetime": "dpp:durabilityExpectedLifetime",
+    "repairabilityIndex": "dpp:repairabilityIndex",
+    "warrantyInformation": "schema:warranty",
+
+    "sustainability": "dpp:Sustainability",
+    "materialComposition": "dpp:materialComposition",
+    "substancesOfConcern": "dpp:substancesOfConcern",
+    "recycledContentPercent": "dpp:recycledContentPercent",
+    "renewableContentPercent": "dpp:renewableContentPercent",
+    "productEnvironmentalFootprint": "dpp:productEnvironmentalFootprint",
+    "carbonFootprint": "dpp:carbonFootprint",
+    "criticalRawMaterials": "dpp:criticalRawMaterials",
+    "originOfMaterials": "dpp:originOfMaterials",
+
+    "economicOperators": "dpp:EconomicOperators",
+    "role": "schema:role",
+    "name": "schema:name",
+    "identifier": "schema:identifier",
+    "address": "schema:address",
+    "contact": "schema:contactPoint",
+
+    "lifecycle": "dpp:Lifecycle",
+    "maintenanceInstructionsUrl": "dpp:maintenanceInstructionsUrl",
+    "traceabilityEvents": "dpp:traceabilityEvents",
+    "ownershipHistory": "dpp:ownershipHistory",
+
+    "endOfLife": "dpp:EndOfLife",
+    "endOfLifeInstructions": "dpp:endOfLifeInstructions",
+    "recyclingInfo": "dpp:recyclingInfo",
+    "recyclabilityRate": "dpp:recyclabilityRate",
+    "takeBackScheme": "dpp:takeBackScheme",
+    "eprContact": "dpp:eprContact",
+
+    "compliance": "dpp:Compliance",
+    "complianceCertificates": "dpp:complianceCertificates",
+    "verifiableCredentials": "vc:VerifiableCredential",
+    "conformityDeclaration": "dpp:conformityDeclaration",
+
+    "consumerInformation": "dpp:ConsumerInformation",
+    "userManualUrl": "schema:url",
+    "safetyInstructions": "schema:safetyConsideration",
+    "customerSupport": "schema:ContactPoint",
+
+    "metadata": "dpp:Metadata",
+    "resolverUrl": "dpp:resolverUrl",
+    "registryEntryId": "dpp:registryEntryId",
+    "schemaVersion": "schema:version",
+    "accessRightsMetadata": "dpp:accessRightsMetadata",
+    "availabilityGuarantee": "dpp:availabilityGuarantee"
+  }
+}

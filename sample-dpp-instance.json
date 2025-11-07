@@ -1,0 +1,52 @@
+{
+    "$schema": "./DPP-generic-schema.json",
+    "@context": {
+        "dpp": "https://w3id.org/dpp/v1/",
+        "schema": "https://schema.org/",
+        "ace": "https://acespire.com/vocab/ace-dpp/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@type": "ace:AceDigitalProductPassport",
+    "identification": {
+        "uniqueProductIdentifier": "ACE-12345",
+        "manufacturerName": "Acespire Consulting Solutions",
+        "dataCarrierType": "QR",
+        "productCategory": "electronics"
+    },
+    "product": {
+        "productName": "Smart Charger",
+        "classification": [
+            {
+                "classificationStandard": "UNSPSC",
+                "classificationID": "39121006"
+            }
+        ],
+        "productImage": {
+            "@type": "schema:ImageObject",
+            "contentUrl": "https://example.com/image.jpg"
+        }
+    },
+    "sustainability": {
+        "recycledContentPercent": 15,
+        "productEnvironmentalFootprint": {
+            "carbonFootprint": 1.2
+        }
+    },
+    "economicOperators": [
+        {
+            "role": "manufacturer",
+            "name": "Acespire Consulting Solutions",
+            "identifier": "EORIACE123"
+        }
+    ],
+    "metadata": {
+        "resolverUrl": "https://resolver.acespire.com/dpp/ACE-12345",
+        "accessRightsMetadata": {
+            "publicFields": [
+                "productName",
+                "productImage"
+            ]
+        },
+        "schemaVersion": "2.0.0"
+    }
+}
