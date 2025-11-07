@@ -8,15 +8,9 @@
     "vc": "https://www.w3.org/2018/credentials#",
     "sec": "https://w3id.org/security#",
     
-    "AceDigitalProductPassport": {
-      "@id": "ace:AceDigitalProductPassport",
-      "@type": "@id"
-    },
+    "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
     
-    "identification": {
-      "@id": "ace:identification",
-      "@type": "@id"
-    },
+    "identification": "dpp:identification",
     "uniqueProductIdentifier": "dpp:uniqueProductIdentifier",
     "dataCarrierType": "dpp:dataCarrierType",
     "productLevel": "dpp:productLevel",
@@ -38,18 +32,15 @@
       "@type": "@id"
     },
     
-    "product": {
-      "@id": "ace:product",
-      "@type": "@id"
-    },
+    "product": "dpp:product",
     "productName": "schema:name",
     "productDescription": "schema:description",
     "brand": "schema:brand",
     "modelNumber": "schema:model",
-    "classification": "ace:classification",
-    "classificationStandard": "ace:classificationStandard",
-    "classificationID": "ace:classificationID",
-    "classificationDescription": "ace:classificationDescription",
+    "classification": "dpp:classification",
+    "classificationStandard": "dpp:classificationStandard",
+    "classificationID": "dpp:classificationID",
+    "classificationDescription": "dpp:classificationDescription",
     "productImage": {
       "@id": "schema:image",
       "@type": "@id"
@@ -70,7 +61,7 @@
     },
     "physicalDimension": "schema:size",
     "length": {
-      "@id": "ace:length",
+      "@id": "dpp:length",
       "@type": "xsd:decimal"
     },
     "weight": {
@@ -78,136 +69,133 @@
       "@type": "xsd:decimal"
     },
     "volume": {
-      "@id": "ace:volume",
+      "@id": "dpp:volume",
       "@type": "xsd:decimal"
     },
     "technicalSpecifications": "schema:additionalProperty",
-    "parameter": "ace:parameter",
+    "parameter": "dpp:parameter",
     "value": "schema:value",
     "unit": "schema:unitCode",
-    "testMethod": "ace:testMethod",
-    "energyEfficiencyClass": "ace:energyEfficiencyClass",
-    "durabilityExpectedLifetime": "ace:durabilityExpectedLifetime",
-    "conditions": "ace:conditions",
-    "repairabilityIndex": "ace:repairabilityIndex",
+    "testMethod": "dpp:testMethod",
+    "energyEfficiencyClass": "dpp:energyEfficiencyClass",
+    "durabilityExpectedLifetime": "dpp:durabilityExpectedLifetime",
+    "conditions": "dpp:conditions",
+    "repairabilityIndex": "dpp:repairabilityIndex",
     "score": {
-      "@id": "ace:score",
+      "@id": "dpp:score",
       "@type": "xsd:decimal"
     },
-    "methodology": "ace:methodology",
+    "methodology": "dpp:methodology",
     "calculationDate": {
-      "@id": "ace:calculationDate",
+      "@id": "dpp:calculationDate",
       "@type": "xsd:date"
     },
     "repairInstructionsUrl": {
-      "@id": "ace:repairInstructionsUrl",
+      "@id": "dpp:repairInstructionsUrl",
       "@type": "@id"
     },
-    "sparePartsAvailability": "ace:sparePartsAvailability",
-    "availabilityPeriod": "ace:availabilityPeriod",
-    "deliveryTime": "ace:deliveryTime",
+    "sparePartsAvailability": "dpp:sparePartsAvailability",
+    "availabilityPeriod": "dpp:availabilityPeriod",
+    "deliveryTime": "dpp:deliveryTime",
     "warrantyInformation": "schema:warranty",
     "period": "schema:duration",
-    "coverage": "ace:coverage",
+    "coverage": "dpp:coverage",
     "termsUrl": {
-      "@id": "ace:termsUrl",
+      "@id": "dpp:termsUrl",
       "@type": "@id"
     },
     "commercialGuarantee": {
-      "@id": "ace:commercialGuarantee",
+      "@id": "dpp:commercialGuarantee",
       "@type": "xsd:boolean"
     },
     
-    "sustainability": {
-      "@id": "ace:sustainability",
-      "@type": "@id"
-    },
+    "sustainability": "dpp:sustainability",
     "materialComposition": {
-      "@id": "ace:materialComposition",
+      "@id": "dpp:materialComposition",
       "@container": "@list"
     },
-    "materialName": "ace:materialName",
-    "casNumber": "ace:casNumber",
+    "materialName": "dpp:materialName",
+    "casNumber": "dpp:casNumber",
     "percentage": {
-      "@id": "ace:percentage",
+      "@id": "dpp:percentage",
       "@type": "xsd:decimal"
     },
     "recyclable": {
-      "@id": "ace:recyclable",
+      "@id": "dpp:recyclable",
       "@type": "xsd:boolean"
     },
     "renewable": {
-      "@id": "ace:renewable",
+      "@id": "dpp:renewable",
       "@type": "xsd:boolean"
     },
     "substancesOfConcern": {
-      "@id": "ace:substancesOfConcern",
+      "@id": "dpp:substancesOfConcern",
       "@container": "@list"
     },
-    "substanceName": "ace:substanceName",
-    "ecNumber": "ace:ecNumber",
+    "substanceName": "dpp:substanceName",
+    "ecNumber": "dpp:ecNumber",
     "concentration": {
-      "@id": "ace:concentration",
+      "@id": "dpp:concentration",
       "@type": "xsd:decimal"
     },
     "location": "schema:location",
-    "exemption": "ace:exemption",
+    "exemption": "dpp:exemption",
     "recycledContentPercent": {
-      "@id": "ace:recycledContentPercent",
+      "@id": "dpp:recycledContentPercent",
       "@type": "xsd:decimal"
     },
     "renewableContentPercent": {
-      "@id": "ace:renewableContentPercent",
+      "@id": "dpp:renewableContentPercent",
       "@type": "xsd:decimal"
     },
-    "productEnvironmentalFootprint": "ace:productEnvironmentalFootprint",
+    "productEnvironmentalFootprint": "dpp:productEnvironmentalFootprint",
     "carbonFootprint": {
-      "@id": "ace:carbonFootprint",
+      "@id": "dpp:carbonFootprint",
       "@type": "xsd:decimal"
     },
-    "scope": "ace:scope",
+    "scope": "dpp:scope",
     "scope1": {
-      "@id": "ace:scope1",
+      "@id": "dpp:scope1",
       "@type": "xsd:decimal"
     },
     "scope2": {
-      "@id": "ace:scope2",
+      "@id": "dpp:scope2",
       "@type": "xsd:decimal"
     },
     "scope3": {
-      "@id": "ace:scope3",
+      "@id": "dpp:scope3",
       "@type": "xsd:decimal"
     },
-    "calculationMethod": "ace:calculationMethod",
+    "calculationMethod": "dpp:calculationMethod",
     "pefCompliant": {
-      "@id": "ace:pefCompliant",
+      "@id": "dpp:pefCompliant",
       "@type": "xsd:boolean"
     },
-    "verificationBody": "ace:verificationBody",
-    "pcfDataQualityRating": "ace:pcfDataQualityRating",
-    "waterFootprint": "ace:waterFootprint",
+    "verificationBody": "dpp:verificationBody",
+    "pcfDataQualityRating": "dpp:pcfDataQualityRating",
+    "waterFootprint": "dpp:waterFootprint",
     "criticalRawMaterials": {
-      "@id": "ace:criticalRawMaterials",
+      "@id": "dpp:criticalRawMaterials",
       "@container": "@list"
     },
-    "material": "ace:material",
+    "material": "dpp:material",
     "quantity": {
       "@id": "schema:quantity",
       "@type": "xsd:decimal"
     },
-    "origin": "ace:origin",
+    "origin": "dpp:origin",
     "originOfMaterials": {
-      "@id": "ace:originOfMaterials",
+      "@id": "dpp:originOfMaterials",
       "@container": "@list"
     },
     "country": "schema:addressCountry",
     "region": "schema:addressRegion",
-    "biodiversityImpact": "ace:biodiversityImpact",
-    "assessment": "ace:assessment",
-    "mitigation": "ace:mitigation",
+    "biodiversityImpact": "dpp:biodiversityImpact",
+    "assessment": "dpp:assessment",
+    "mitigation": "dpp:mitigation",
     
     "economicOperators": {
-      "@id": "ace:economicOperators",
+      "@id": "dpp:economicOperators",
       "@container": "@list"
     },
     "role": "schema:roleName",
@@ -225,42 +213,39 @@
       "@type": "@id"
     },
     
-    "lifecycle": {
-      "@id": "ace:lifecycle",
-      "@type": "@id"
-    },
+    "lifecycle": "dpp:lifecycle",
     "maintenanceInstructionsUrl": {
-      "@id": "ace:maintenanceInstructionsUrl",
+      "@id": "dpp:maintenanceInstructionsUrl",
       "@type": "@id"
     },
     "maintenanceSchedule": {
-      "@id": "ace:maintenanceSchedule",
+      "@id": "dpp:maintenanceSchedule",
       "@container": "@list"
     },
-    "interval": "ace:interval",
+    "interval": "dpp:interval",
     "taskDescription": "schema:description",
-    "requiredParts": "ace:requiredParts",
+    "requiredParts": "dpp:requiredParts",
     "maintenanceHistory": {
-      "@id": "ace:maintenanceHistory",
+      "@id": "dpp:maintenanceHistory",
       "@container": "@list"
     },
     "date": {
       "@id": "schema:date",
       "@type": "xsd:date"
     },
-    "performedBy": "ace:performedBy",
+    "performedBy": "dpp:performedBy",
     "description": "schema:description",
-    "partsReplaced": "ace:partsReplaced",
+    "partsReplaced": "dpp:partsReplaced",
     "cost": {
       "@id": "schema:price",
       "@type": "xsd:decimal"
     },
-    "verificationHash": "ace:verificationHash",
+    "verificationHash": "dpp:verificationHash",
     "traceabilityEvents": {
-      "@id": "ace:traceabilityEvents",
+      "@id": "dpp:traceabilityEvents",
       "@container": "@list"
     },
-    "eventType": "ace:eventType",
+    "eventType": "dpp:eventType",
     "timestamp": {
       "@id": "schema:startTime",
       "@type": "xsd:dateTime"
@@ -275,62 +260,56 @@
       "@type": "xsd:decimal"
     },
     "actor": "schema:agent",
-    "actorIdentifier": "ace:actorIdentifier",
-    "businessStep": "ace:businessStep",
-    "disposition": "ace:disposition",
+    "actorIdentifier": "dpp:actorIdentifier",
+    "businessStep": "dpp:businessStep",
+    "disposition": "dpp:disposition",
     "ownershipHistory": {
-      "@id": "ace:ownershipHistory",
+      "@id": "dpp:ownershipHistory",
       "@container": "@list"
     },
     "transferDate": {
-      "@id": "ace:transferDate",
+      "@id": "dpp:transferDate",
       "@type": "xsd:date"
     },
-    "previousOwner": "ace:previousOwner",
-    "currentOwner": "ace:currentOwner",
-    "transferReason": "ace:transferReason",
+    "previousOwner": "dpp:previousOwner",
+    "currentOwner": "dpp:currentOwner",
+    "transferReason": "dpp:transferReason",
     
-    "endOfLife": {
-      "@id": "ace:endOfLife",
-      "@type": "@id"
-    },
-    "endOfLifeInstructions": "ace:endOfLifeInstructions",
-    "recyclingInfo": "ace:recyclingInfo",
+    "endOfLife": "dpp:endOfLife",
+    "endOfLifeInstructions": "dpp:endOfLifeInstructions",
+    "recyclingInfo": "dpp:recyclingInfo",
     "recyclabilityRate": {
-      "@id": "ace:recyclabilityRate",
+      "@id": "dpp:recyclabilityRate",
       "@type": "xsd:decimal"
     },
-    "dismantlingInstructions": "ace:dismantlingInstructions",
+    "dismantlingInstructions": "dpp:dismantlingInstructions",
     "instructionsUrl": {
-      "@id": "ace:instructionsUrl",
+      "@id": "dpp:instructionsUrl",
       "@type": "@id"
     },
-    "toolsRequired": "ace:toolsRequired",
-    "estimatedTime": "ace:estimatedTime",
-    "reverseLogisticsInstructions": "ace:reverseLogisticsInstructions",
-    "takeBackScheme": "ace:takeBackScheme",
+    "toolsRequired": "dpp:toolsRequired",
+    "estimatedTime": "dpp:estimatedTime",
+    "reverseLogisticsInstructions": "dpp:reverseLogisticsInstructions",
+    "takeBackScheme": "dpp:takeBackScheme",
     "available": {
-      "@id": "ace:available",
+      "@id": "dpp:available",
       "@type": "xsd:boolean"
     },
     "provider": "schema:provider",
     "contactUrl": {
-      "@id": "ace:contactUrl",
+      "@id": "dpp:contactUrl",
       "@type": "@id"
     },
-    "eprContact": "ace:eprContact",
-    "wasteClassification": "ace:wasteClassification",
+    "eprContact": "dpp:eprContact",
+    "wasteClassification": "dpp:wasteClassification",
     
-    "compliance": {
-      "@id": "ace:compliance",
-      "@type": "@id"
-    },
+    "compliance": "dpp:compliance",
     "complianceCertificates": {
-      "@id": "ace:complianceCertificates",
+      "@id": "dpp:complianceCertificates",
       "@container": "@list"
     },
-    "certificateId": "ace:certificateId",
-    "certificateType": "ace:certificateType",
+    "certificateId": "dpp:certificateId",
+    "certificateType": "dpp:certificateType",
     "issuer": "schema:issuer",
     "issueDate": {
       "@id": "schema:dateIssued",
@@ -341,27 +320,27 @@
       "@type": "xsd:date"
     },
     "certificateUrl": {
-      "@id": "ace:certificateUrl",
+      "@id": "dpp:certificateUrl",
       "@type": "@id"
     },
     "verificationUrl": {
-      "@id": "ace:verificationUrl",
+      "@id": "dpp:verificationUrl",
       "@type": "@id"
     },
     "testReportReferences": {
-      "@id": "ace:testReportReferences",
+      "@id": "dpp:testReportReferences",
       "@container": "@list"
     },
-    "reportId": "ace:reportId",
-    "testStandard": "ace:testStandard",
-    "labName": "ace:labName",
-    "labAccreditation": "ace:labAccreditation",
+    "reportId": "dpp:reportId",
+    "testStandard": "dpp:testStandard",
+    "labName": "dpp:labName",
+    "labAccreditation": "dpp:labAccreditation",
     "testDate": {
-      "@id": "ace:testDate",
+      "@id": "dpp:testDate",
       "@type": "xsd:date"
     },
     "reportUrl": {
-      "@id": "ace:reportUrl",
+      "@id": "dpp:reportUrl",
       "@type": "@id"
     },
     "verifiableCredentials": {
@@ -390,84 +369,78 @@
       "@type": "@id"
     },
     "proofValue": "sec:proofValue",
-    "conformityDeclaration": "ace:conformityDeclaration",
+    "conformityDeclaration": "dpp:conformityDeclaration",
     "declarationUrl": {
-      "@id": "ace:declarationUrl",
+      "@id": "dpp:declarationUrl",
       "@type": "@id"
     },
-    "euDeclarationNumber": "ace:euDeclarationNumber",
-    "harmonizedStandards": "ace:harmonizedStandards",
+    "euDeclarationNumber": "dpp:euDeclarationNumber",
+    "harmonizedStandards": "dpp:harmonizedStandards",
     
-    "consumerInformation": {
-      "@id": "ace:consumerInformation",
-      "@type": "@id"
-    },
+    "consumerInformation": "dpp:consumerInformation",
     "userManualUrl": {
-      "@id": "schema:url",
+      "@id": "dpp:userManualUrl",
       "@type": "@id"
     },
     "safetyInstructions": "schema:safetyConsideration",
     "customerSupport": "schema:contactPoint",
     "chatUrl": {
-      "@id": "ace:chatUrl",
+      "@id": "dpp:chatUrl",
       "@type": "@id"
     },
     "marketingClaims": {
-      "@id": "ace:marketingClaims",
+      "@id": "dpp:marketingClaims",
       "@container": "@list"
     },
-    "claim": "ace:claim",
-    "substantiation": "ace:substantiation",
+    "claim": "dpp:claim",
+    "substantiation": "dpp:substantiation",
     
-    "metadata": {
-      "@id": "ace:metadata",
-      "@type": "@id"
-    },
+    "metadata": "dpp:metadata",
     "resolverUrl": {
-      "@id": "ace:resolverUrl",
+      "@id": "dpp:resolverUrl",
       "@type": "@id"
     },
-    "registryEntryId": "ace:registryEntryId",
+    "registryEntryId": "dpp:registryEntryId",
     "euDppRegistryUrl": {
-      "@id": "ace:euDppRegistryUrl",
+      "@id": "dpp:euDppRegistryUrl",
       "@type": "@id"
     },
-    "storageLocation": "ace:storageLocation",
-    "storageProvider": "ace:storageProvider",
-    "accessRightsMetadata": "ace:accessRightsMetadata",
-    "publicFields": "ace:publicFields",
-    "restrictedFields": "ace:restrictedFields",
-    "regulatorAccessFields": "ace:regulatorAccessFields",
-    "authenticationMethod": "ace:authenticationMethod",
-    "availabilityGuarantee": "ace:availabilityGuarantee",
-    "formatAndOntology": "ace:formatAndOntology",
+    "storageLocation": "dpp:storageLocation",
+    "storageProvider": "dpp:storageProvider",
+    "accessRightsMetadata": "dpp:accessRightsMetadata",
+    "publicFields": "dpp:publicFields",
+    "restrictedFields": "dpp:restrictedFields",
+    "regulatorAccessFields": "dpp:regulatorAccessFields",
+    "authenticationMethod": "dpp:authenticationMethod",
+    "availabilityGuarantee": "dpp:availabilityGuarantee",
+    "formatAndOntology": "dpp:formatAndOntology",
     "schemaVersion": "schema:schemaVersion",
     "lastUpdated": {
       "@id": "schema:dateModified",
       "@type": "xsd:dateTime"
     },
-    "dataQuality": "ace:dataQuality",
+    "dataQuality": "dpp:dataQuality",
     "completeness": {
-      "@id": "ace:completeness",
+      "@id": "dpp:completeness",
       "@type": "xsd:decimal"
     },
-    "accuracy": "ace:accuracy",
+    "accuracy": "dpp:accuracy",
     "lastAuditDate": {
-      "@id": "ace:lastAuditDate",
+      "@id": "dpp:lastAuditDate",
       "@type": "xsd:date"
     },
-    "interoperability": "ace:interoperability",
+    "interoperability": "dpp:interoperability",
     "gs1Compatible": {
-      "@id": "ace:gs1Compatible",
+      "@id": "dpp:gs1Compatible",
       "@type": "xsd:boolean"
     },
-    "epcisVersion": "ace:epcisVersion",
+    "epcisVersion": "dpp:epcisVersion",
     "catenaxCompatible": {
-      "@id": "ace:catenaxCompatible",
+      "@id": "dpp:catenaxCompatible",
       "@type": "xsd:boolean"
     },
     "pactCompliant": {
-      "@id": "ace:pactCompliant",
+      "@id": "dpp:pactCompliant",
       "@type": "xsd:boolean"
     }
   }
