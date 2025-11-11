@@ -1,0 +1,1058 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "https://schema.org/",
+    "ace": "https://sushmitha34.github.io/DPP/terms#",
+    "dpp": "https://w3id.org/dpp/v1/",
+    "defines": {
+      "@reverse": "rdfs:isDefinedBy"
+    }
+  },
+  "@id": "https://sushmitha34.github.io/DPP/terms",
+  "@type": "owl:Ontology",
+  "dcterms:title": "Ace Digital Product Passport Vocabulary",
+  "dcterms:description": "A comprehensive vocabulary for Digital Product Passports compliant with EU ESPR regulations (Articles 4-12), W3C Verifiable Credentials Data Model 2.0, and semantic web standards.",
+  "dcterms:creator": "Ace DPP Working Group",
+  "dcterms:created": "2024-11-11",
+  "dcterms:modified": "2025-11-11",
+  "owl:versionInfo": "2.0.0",
+  "dcterms:license": "https://creativecommons.org/licenses/by/4.0/",
+  "rdfs:comment": "This vocabulary provides standardized terms for describing product identification, sustainability metrics, lifecycle data, compliance information, and metadata for Digital Product Passports.",
+  
+  "defines": [
+    {
+      "@id": "ace:AceDigitalProductPassport",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Ace Digital Product Passport",
+      "rdfs:comment": "The main class representing a complete Digital Product Passport containing all required information about a product according to ESPR regulations.",
+      "rdfs:subClassOf": "schema:Thing",
+      "dcterms:references": "ESPR Articles 4-12"
+    },
+    {
+      "@id": "ace:Identification",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Identification",
+      "rdfs:comment": "Container for product identification and traceability information as required by ESPR Article 9.",
+      "dcterms:references": "ESPR Article 9"
+    },
+    {
+      "@id": "ace:ProductLayer",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Product Layer",
+      "rdfs:comment": "Container for product characteristics, specifications, and technical details.",
+      "dcterms:references": "ESPR Articles 5-7"
+    },
+    {
+      "@id": "ace:Sustainability",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Sustainability",
+      "rdfs:comment": "Container for environmental impact, material composition, and circularity information.",
+      "dcterms:references": "ESPR Articles 5-7"
+    },
+    {
+      "@id": "ace:Lifecycle",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Lifecycle",
+      "rdfs:comment": "Container for maintenance, service history, and supply chain traceability events.",
+      "dcterms:references": "ESPR Articles 7, 10"
+    },
+    {
+      "@id": "ace:EndOfLife",
+      "@type": "rdfs:Class",
+      "rdfs:label": "End of Life",
+      "rdfs:comment": "Container for end-of-life instructions, recycling information, and take-back schemes.",
+      "dcterms:references": "ESPR Article 8"
+    },
+    {
+      "@id": "ace:Compliance",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Compliance",
+      "rdfs:comment": "Container for certificates, test reports, and verifiable credentials.",
+      "dcterms:references": "ESPR Article 10"
+    },
+    {
+      "@id": "ace:ConsumerInfo",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Consumer Information",
+      "rdfs:comment": "Container for consumer-facing information including manuals, safety instructions, and support contacts.",
+      "dcterms:references": "ESPR Article 8"
+    },
+    {
+      "@id": "ace:Metadata",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Metadata",
+      "rdfs:comment": "Container for DPP metadata including access rights, registry information, and data quality indicators.",
+      "dcterms:references": "ESPR Article 10"
+    },
+    {
+      "@id": "ace:EconomicOperators",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Economic Operators",
+      "rdfs:comment": "Information about economic operators in the supply chain.",
+      "dcterms:references": "ESPR Article 4"
+    },
+    {
+      "@id": "dpp:uniqueProductIdentifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "unique product identifier",
+      "rdfs:comment": "Globally unique identifier for the product (e.g., GTIN, UUID, or custom scheme).",
+      "rdfs:domain": "ace:Identification",
+      "rdfs:range": "xsd:string",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:dataCarrierType",
+      "@type": "rdf:Property",
+      "rdfs:label": "data carrier type",
+      "rdfs:comment": "Type of machine-readable data carrier per ESPR Article 9 (QR, NFC, RFID, DataMatrix, DigitalWatermark, DotCode).",
+      "rdfs:domain": "ace:Identification",
+      "rdfs:range": "xsd:string",
+      "dcterms:references": "ESPR Article 9"
+    },
+    {
+      "@id": "dpp:productLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "product level",
+      "rdfs:comment": "Granularity level of the passport (item, batch, or model).",
+      "rdfs:domain": "ace:Identification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:energyEfficiencyClass",
+      "@type": "rdf:Property",
+      "rdfs:label": "energy efficiency class",
+      "rdfs:comment": "EU Energy Label classification (A+++ to G).",
+      "rdfs:domain": "ace:ProductLayer",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:repairabilityIndex",
+      "@type": "rdf:Property",
+      "rdfs:label": "repairability index",
+      "rdfs:comment": "Product repairability score and related information including methodology, calculation date, and spare parts availability.",
+      "rdfs:domain": "ace:ProductLayer",
+      "rdfs:range": "ace:RepairabilityIndexObject"
+    },
+    {
+      "@id": "dpp:score",
+      "@type": "rdf:Property",
+      "rdfs:label": "score",
+      "rdfs:comment": "Numeric score value (0-10 for repairability index).",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:methodology",
+      "@type": "rdf:Property",
+      "rdfs:label": "methodology",
+      "rdfs:comment": "Methodology or standard used for calculation.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:calculationDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "calculation date",
+      "rdfs:comment": "Date when calculation was performed.",
+      "rdfs:range": "xsd:date"
+    },
+    {
+      "@id": "dpp:durabilityExpectedLifetime",
+      "@type": "rdf:Property",
+      "rdfs:label": "durability expected lifetime",
+      "rdfs:comment": "Expected product lifetime under specified conditions.",
+      "rdfs:domain": "ace:ProductLayer",
+      "rdfs:range": "ace:DurabilityObject"
+    },
+    {
+      "@id": "dpp:recycledContentPercent",
+      "@type": "rdf:Property",
+      "rdfs:label": "recycled content percent",
+      "rdfs:comment": "Percentage of recycled materials by weight.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "xsd:decimal",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:renewableContentPercent",
+      "@type": "rdf:Property",
+      "rdfs:label": "renewable content percent",
+      "rdfs:comment": "Percentage of renewable materials by weight.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:carbonFootprint",
+      "@type": "rdf:Property",
+      "rdfs:label": "carbon footprint",
+      "rdfs:comment": "Total carbon footprint in kg CO2e.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "xsd:decimal",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:productEnvironmentalFootprint",
+      "@type": "rdf:Property",
+      "rdfs:label": "product environmental footprint",
+      "rdfs:comment": "Complete environmental footprint information including carbon footprint, calculation method, and verification.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:EnvironmentalFootprintObject",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:scope1",
+      "@type": "rdf:Property",
+      "rdfs:label": "scope 1 emissions",
+      "rdfs:comment": "Direct GHG emissions from owned or controlled sources.",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:scope2",
+      "@type": "rdf:Property",
+      "rdfs:label": "scope 2 emissions",
+      "rdfs:comment": "Indirect GHG emissions from purchased energy.",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:scope3",
+      "@type": "rdf:Property",
+      "rdfs:label": "scope 3 emissions",
+      "rdfs:comment": "Other indirect GHG emissions in the value chain.",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:calculationMethod",
+      "@type": "rdf:Property",
+      "rdfs:label": "calculation method",
+      "rdfs:comment": "Standard used for calculation (e.g., ISO 14067, PEF, GHG Protocol).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:pefCompliant",
+      "@type": "rdf:Property",
+      "rdfs:label": "PEF compliant",
+      "rdfs:comment": "Whether the calculation is compliant with EU Product Environmental Footprint methodology.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:verificationBody",
+      "@type": "rdf:Property",
+      "rdfs:label": "verification body",
+      "rdfs:comment": "Organization that verified the data or calculation.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:pcfDataQualityRating",
+      "@type": "rdf:Property",
+      "rdfs:label": "PCF data quality rating",
+      "rdfs:comment": "Product Carbon Footprint data quality rating (high, medium, low).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:materialComposition",
+      "@type": "rdf:Property",
+      "rdfs:label": "material composition",
+      "rdfs:comment": "List of materials composing the product with percentages, CAS numbers, and recyclability indicators.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:MaterialObject"
+    },
+    {
+      "@id": "dpp:materialName",
+      "@type": "rdf:Property",
+      "rdfs:label": "material name",
+      "rdfs:comment": "Name of the material.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:casNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "CAS number",
+      "rdfs:comment": "Chemical Abstracts Service registry number.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:percentage",
+      "@type": "rdf:Property",
+      "rdfs:label": "percentage",
+      "rdfs:comment": "Percentage by weight (0-100).",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:recyclable",
+      "@type": "rdf:Property",
+      "rdfs:label": "recyclable",
+      "rdfs:comment": "Whether the material is recyclable.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:renewable",
+      "@type": "rdf:Property",
+      "rdfs:label": "renewable",
+      "rdfs:comment": "Whether the material is from renewable sources.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:substancesOfConcern",
+      "@type": "rdf:Property",
+      "rdfs:label": "substances of concern",
+      "rdfs:comment": "REACH SVHC and other hazardous substances present in the product.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:SubstanceObject",
+      "dcterms:references": "ESPR Article 7(2)(b)"
+    },
+    {
+      "@id": "dpp:substanceName",
+      "@type": "rdf:Property",
+      "rdfs:label": "substance name",
+      "rdfs:comment": "Name of the substance of concern.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:ecNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "EC number",
+      "rdfs:comment": "European Community number for the substance.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:concentration",
+      "@type": "rdf:Property",
+      "rdfs:label": "concentration",
+      "rdfs:comment": "Concentration of the substance (percentage).",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:exemption",
+      "@type": "rdf:Property",
+      "rdfs:label": "exemption",
+      "rdfs:comment": "Regulatory exemption information (e.g., RoHS exemption).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:criticalRawMaterials",
+      "@type": "rdf:Property",
+      "rdfs:label": "critical raw materials",
+      "rdfs:comment": "EU Critical Raw Materials List items present in the product.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:CriticalMaterialObject"
+    },
+    {
+      "@id": "dpp:material",
+      "@type": "rdf:Property",
+      "rdfs:label": "material",
+      "rdfs:comment": "Name of the material.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:origin",
+      "@type": "rdf:Property",
+      "rdfs:label": "origin",
+      "rdfs:comment": "Geographic origin of the material.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:waterFootprint",
+      "@type": "rdf:Property",
+      "rdfs:label": "water footprint",
+      "rdfs:comment": "Total water footprint.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:WaterFootprintObject"
+    },
+    {
+      "@id": "dpp:biodiversityImpact",
+      "@type": "rdf:Property",
+      "rdfs:label": "biodiversity impact",
+      "rdfs:comment": "Assessment of impact on biodiversity.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:BiodiversityObject"
+    },
+    {
+      "@id": "dpp:assessment",
+      "@type": "rdf:Property",
+      "rdfs:label": "assessment",
+      "rdfs:comment": "Assessment description or result.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:mitigation",
+      "@type": "rdf:Property",
+      "rdfs:label": "mitigation",
+      "rdfs:comment": "Mitigation measures description.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:maintenanceHistory",
+      "@type": "rdf:Property",
+      "rdfs:label": "maintenance history",
+      "rdfs:comment": "Record of maintenance and service events performed on the product.",
+      "rdfs:domain": "ace:Lifecycle",
+      "rdfs:range": "ace:MaintenanceEventObject"
+    },
+    {
+      "@id": "dpp:performedBy",
+      "@type": "rdf:Property",
+      "rdfs:label": "performed by",
+      "rdfs:comment": "Entity that performed the maintenance or service.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:partsReplaced",
+      "@type": "rdf:Property",
+      "rdfs:label": "parts replaced",
+      "rdfs:comment": "List of parts replaced during maintenance.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:verificationHash",
+      "@type": "rdf:Property",
+      "rdfs:label": "verification hash",
+      "rdfs:comment": "Cryptographic hash for data integrity verification.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:traceabilityEvents",
+      "@type": "rdf:Property",
+      "rdfs:label": "traceability events",
+      "rdfs:comment": "Supply chain events following GS1 EPCIS standard.",
+      "rdfs:domain": "ace:Lifecycle",
+      "rdfs:range": "ace:TraceabilityEventObject",
+      "dcterms:conformsTo": "GS1 EPCIS 2.0"
+    },
+    {
+      "@id": "dpp:eventType",
+      "@type": "rdf:Property",
+      "rdfs:label": "event type",
+      "rdfs:comment": "Type of traceability event (commission, aggregation, transformation, observation, transaction, decommission).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:actorIdentifier",
+      "@type": "rdf:Property",
+      "rdfs:label": "actor identifier",
+      "rdfs:comment": "Identifier for the actor performing the event.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:businessStep",
+      "@type": "rdf:Property",
+      "rdfs:label": "business step",
+      "rdfs:comment": "Business process step in the supply chain.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:disposition",
+      "@type": "rdf:Property",
+      "rdfs:label": "disposition",
+      "rdfs:comment": "Status or disposition of the product at this event.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:ownershipHistory",
+      "@type": "rdf:Property",
+      "rdfs:label": "ownership history",
+      "rdfs:comment": "Record of ownership transfers throughout the product lifecycle.",
+      "rdfs:domain": "ace:Lifecycle",
+      "rdfs:range": "ace:OwnershipTransferObject"
+    },
+    {
+      "@id": "dpp:transferDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "transfer date",
+      "rdfs:comment": "Date of ownership transfer.",
+      "rdfs:range": "xsd:date"
+    },
+    {
+      "@id": "dpp:previousOwner",
+      "@type": "rdf:Property",
+      "rdfs:label": "previous owner",
+      "rdfs:comment": "Previous owner identifier.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:currentOwner",
+      "@type": "rdf:Property",
+      "rdfs:label": "current owner",
+      "rdfs:comment": "Current owner identifier.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:transferReason",
+      "@type": "rdf:Property",
+      "rdfs:label": "transfer reason",
+      "rdfs:comment": "Reason for ownership transfer (sale, lease, return, warranty).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:endOfLifeInstructions",
+      "@type": "rdf:Property",
+      "rdfs:label": "end of life instructions",
+      "rdfs:comment": "Instructions for proper disposal and recycling of the product.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:string",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:recyclabilityRate",
+      "@type": "rdf:Property",
+      "rdfs:label": "recyclability rate",
+      "rdfs:comment": "Percentage of product that can be recycled (0-100).",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:dismantlingInstructions",
+      "@type": "rdf:Property",
+      "rdfs:label": "dismantling instructions",
+      "rdfs:comment": "Instructions for dismantling the product for recycling.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "ace:DismantlingObject"
+    },
+    {
+      "@id": "dpp:instructionsUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "instructions URL",
+      "rdfs:comment": "URL to detailed instructions.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:toolsRequired",
+      "@type": "rdf:Property",
+      "rdfs:label": "tools required",
+      "rdfs:comment": "List of tools required for dismantling.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:estimatedTime",
+      "@type": "rdf:Property",
+      "rdfs:label": "estimated time",
+      "rdfs:comment": "Estimated time required for the task.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:takeBackScheme",
+      "@type": "rdf:Property",
+      "rdfs:label": "take-back scheme",
+      "rdfs:comment": "Information about product take-back program.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "ace:TakeBackObject"
+    },
+    {
+      "@id": "dpp:available",
+      "@type": "rdf:Property",
+      "rdfs:label": "available",
+      "rdfs:comment": "Whether the service or scheme is available.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:eprContact",
+      "@type": "rdf:Property",
+      "rdfs:label": "EPR contact",
+      "rdfs:comment": "Extended Producer Responsibility contact information.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:wasteClassification",
+      "@type": "rdf:Property",
+      "rdfs:label": "waste classification",
+      "rdfs:comment": "EU waste code (EWC/LoW) for the product.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:complianceCertificates",
+      "@type": "rdf:Property",
+      "rdfs:label": "compliance certificates",
+      "rdfs:comment": "List of compliance certificates (CE, ISO, Energy Star, etc.).",
+      "rdfs:domain": "ace:Compliance",
+      "rdfs:range": "ace:CertificateObject"
+    },
+    {
+      "@id": "dpp:certificateId",
+      "@type": "rdf:Property",
+      "rdfs:label": "certificate ID",
+      "rdfs:comment": "Unique identifier for the certificate.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:certificateType",
+      "@type": "rdf:Property",
+      "rdfs:label": "certificate type",
+      "rdfs:comment": "Type of certificate (CE, ISO, Energy Star, EPEAT, Blue Angel, EU Ecolabel, TCO).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:certificateUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "certificate URL",
+      "rdfs:comment": "URL to the certificate document.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:verificationUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "verification URL",
+      "rdfs:comment": "URL to verify the certificate or claim.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:testReportReferences",
+      "@type": "rdf:Property",
+      "rdfs:label": "test report references",
+      "rdfs:comment": "References to third-party test reports.",
+      "rdfs:domain": "ace:Compliance",
+      "rdfs:range": "ace:TestReportObject"
+    },
+    {
+      "@id": "dpp:reportId",
+      "@type": "rdf:Property",
+      "rdfs:label": "report ID",
+      "rdfs:comment": "Unique identifier for the test report.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:testStandard",
+      "@type": "rdf:Property",
+      "rdfs:label": "test standard",
+      "rdfs:comment": "Standard or methodology used for testing.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:labName",
+      "@type": "rdf:Property",
+      "rdfs:label": "lab name",
+      "rdfs:comment": "Name of the testing laboratory.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:labAccreditation",
+      "@type": "rdf:Property",
+      "rdfs:label": "lab accreditation",
+      "rdfs:comment": "Accreditation standard of the testing laboratory.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:testDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "test date",
+      "rdfs:comment": "Date when the test was performed.",
+      "rdfs:range": "xsd:date"
+    },
+    {
+      "@id": "dpp:reportUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "report URL",
+      "rdfs:comment": "URL to the test report document.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:conformityDeclaration",
+      "@type": "rdf:Property",
+      "rdfs:label": "conformity declaration",
+      "rdfs:comment": "EU Declaration of Conformity information.",
+      "rdfs:domain": "ace:Compliance",
+      "rdfs:range": "ace:ConformityDeclarationObject"
+    },
+    {
+      "@id": "dpp:declarationUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "declaration URL",
+      "rdfs:comment": "URL to the declaration document.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:euDeclarationNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "EU declaration number",
+      "rdfs:comment": "EU Declaration of Conformity number.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:harmonizedStandards",
+      "@type": "rdf:Property",
+      "rdfs:label": "harmonized standards",
+      "rdfs:comment": "List of harmonized standards applied.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:userManualUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "user manual URL",
+      "rdfs:comment": "URL to the user manual (may be multilingual object).",
+      "rdfs:domain": "ace:ConsumerInfo",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:chatUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "chat URL",
+      "rdfs:comment": "URL to customer support chat.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:marketingClaims",
+      "@type": "rdf:Property",
+      "rdfs:label": "marketing claims",
+      "rdfs:comment": "Marketing claims with substantiation and verification.",
+      "rdfs:domain": "ace:ConsumerInfo",
+      "rdfs:range": "ace:MarketingClaimObject"
+    },
+    {
+      "@id": "dpp:claim",
+      "@type": "rdf:Property",
+      "rdfs:label": "claim",
+      "rdfs:comment": "Marketing claim text.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:substantiation",
+      "@type": "rdf:Property",
+      "rdfs:label": "substantiation",
+      "rdfs:comment": "Evidence or reasoning supporting the claim.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:resolverUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "resolver URL",
+      "rdfs:comment": "URL to resolve DPP identifier to current location.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:anyURI",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:registryEntryId",
+      "@type": "rdf:Property",
+      "rdfs:label": "registry entry ID",
+      "rdfs:comment": "ID in EU DPP Registry (when available).",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:euDppRegistryUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "EU DPP registry URL",
+      "rdfs:comment": "Link to EU DPP Registry entry.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:storageLocation",
+      "@type": "rdf:Property",
+      "rdfs:label": "storage location",
+      "rdfs:comment": "Description of where the DPP data is hosted.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:storageProvider",
+      "@type": "rdf:Property",
+      "rdfs:label": "storage provider",
+      "rdfs:comment": "Provider hosting the DPP data.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:accessRightsMetadata",
+      "@type": "rdf:Property",
+      "rdfs:label": "access rights metadata",
+      "rdfs:comment": "Information about who can access which fields of the DPP.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "ace:AccessRightsObject",
+      "owl:cardinality": "required"
+    },
+    {
+      "@id": "dpp:publicFields",
+      "@type": "rdf:Property",
+      "rdfs:label": "public fields",
+      "rdfs:comment": "List of fields visible to all users.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:restrictedFields",
+      "@type": "rdf:Property",
+      "rdfs:label": "restricted fields",
+      "rdfs:comment": "List of fields requiring authentication.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:regulatorAccessFields",
+      "@type": "rdf:Property",
+      "rdfs:label": "regulator access fields",
+      "rdfs:comment": "List of fields accessible only to market surveillance authorities.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:authenticationMethod",
+      "@type": "rdf:Property",
+      "rdfs:label": "authentication method",
+      "rdfs:comment": "Method used for authentication (OAuth2, VerifiablePresentation, APIKey, mTLS).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:availabilityGuarantee",
+      "@type": "rdf:Property",
+      "rdfs:label": "availability guarantee",
+      "rdfs:comment": "Minimum availability period per ESPR Article 10.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:string",
+      "dcterms:references": "ESPR Article 10"
+    },
+    {
+      "@id": "dpp:formatAndOntology",
+      "@type": "rdf:Property",
+      "rdfs:label": "format and ontology",
+      "rdfs:comment": "Data format used (JSON-LD).",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:dataQuality",
+      "@type": "rdf:Property",
+      "rdfs:label": "data quality",
+      "rdfs:comment": "Information about data quality and verification.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "ace:DataQualityObject"
+    },
+    {
+      "@id": "dpp:completeness",
+      "@type": "rdf:Property",
+      "rdfs:label": "completeness",
+      "rdfs:comment": "Completeness score (0-100%).",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "dpp:accuracy",
+      "@type": "rdf:Property",
+      "rdfs:label": "accuracy",
+      "rdfs:comment": "Accuracy classification (verified, self-declared, estimated).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:lastAuditDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "last audit date",
+      "rdfs:comment": "Date of last data quality audit.",
+      "rdfs:range": "xsd:date"
+    },
+    {
+      "@id": "dpp:interoperability",
+      "@type": "rdf:Property",
+      "rdfs:label": "interoperability",
+      "rdfs:comment": "Information about compatibility with other standards and systems.",
+      "rdfs:domain": "ace:Metadata",
+      "rdfs:range": "ace:InteroperabilityObject"
+    },
+    {
+      "@id": "dpp:gs1Compatible",
+      "@type": "rdf:Property",
+      "rdfs:label": "GS1 compatible",
+      "rdfs:comment": "Whether the DPP is compatible with GS1 standards.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:epcisVersion",
+      "@type": "rdf:Property",
+      "rdfs:label": "EPCIS version",
+      "rdfs:comment": "Version of GS1 EPCIS standard used.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:catenaxCompatible",
+      "@type": "rdf:Property",
+      "rdfs:label": "Catena-X compatible",
+      "rdfs:comment": "Whether the DPP is compatible with Catena-X ecosystem.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:pactCompliant",
+      "@type": "rdf:Property",
+      "rdfs:label": "PACT compliant",
+      "rdfs:comment": "Whether the DPP is compliant with Partnership for Carbon Transparency (PACT) standard.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:maintenanceInstructionsUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "maintenance instructions URL",
+      "rdfs:comment": "URL to maintenance instructions.",
+      "rdfs:domain": "ace:Lifecycle",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:maintenanceSchedule",
+      "@type": "rdf:Property",
+      "rdfs:label": "maintenance schedule",
+      "rdfs:comment": "Recommended maintenance schedule.",
+      "rdfs:domain": "ace:Lifecycle",
+      "rdfs:range": "ace:MaintenanceScheduleObject"
+    },
+    {
+      "@id": "dpp:interval",
+      "@type": "rdf:Property",
+      "rdfs:label": "interval",
+      "rdfs:comment": "Time interval for scheduled maintenance.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:requiredParts",
+      "@type": "rdf:Property",
+      "rdfs:label": "required parts",
+      "rdfs:comment": "List of parts required for maintenance task.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:repairInstructionsUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "repair instructions URL",
+      "rdfs:comment": "URL to repair instructions.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:sparePartsAvailability",
+      "@type": "rdf:Property",
+      "rdfs:label": "spare parts availability",
+      "rdfs:comment": "Information about spare parts availability period and delivery time.",
+      "rdfs:range": "ace:SparePartsObject"
+    },
+    {
+      "@id": "dpp:availabilityPeriod",
+      "@type": "rdf:Property",
+      "rdfs:label": "availability period",
+      "rdfs:comment": "Period during which spare parts are available.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:deliveryTime",
+      "@type": "rdf:Property",
+      "rdfs:label": "delivery time",
+      "rdfs:comment": "Expected delivery time for spare parts.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:coverage",
+      "@type": "rdf:Property",
+      "rdfs:label": "coverage",
+      "rdfs:comment": "Description of warranty coverage.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:termsUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "terms URL",
+      "rdfs:comment": "URL to terms and conditions.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:commercialGuarantee",
+      "@type": "rdf:Property",
+      "rdfs:label": "commercial guarantee",
+      "rdfs:comment": "Whether a commercial guarantee is provided beyond legal warranty.",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "dpp:conditions",
+      "@type": "rdf:Property",
+      "rdfs:label": "conditions",
+      "rdfs:comment": "Conditions or context for the data.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:parameter",
+      "@type": "rdf:Property",
+      "rdfs:label": "parameter",
+      "rdfs:comment": "Name of technical parameter.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:testMethod",
+      "@type": "rdf:Property",
+      "rdfs:label": "test method",
+      "rdfs:comment": "Test method or standard used.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:recyclingInfo",
+      "@type": "rdf:Property",
+      "rdfs:label": "recycling info",
+      "rdfs:comment": "Information about recycling the product.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:reverseLogisticsInstructions",
+      "@type": "rdf:Property",
+      "rdfs:label": "reverse logistics instructions",
+      "rdfs:comment": "Instructions for returning the product.",
+      "rdfs:domain": "ace:EndOfLife",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dpp:contactUrl",
+      "@type": "rdf:Property",
+      "rdfs:label": "contact URL",
+      "rdfs:comment": "URL for contacting the relevant party.",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dpp:originOfMaterials",
+      "@type": "rdf:Property",
+      "rdfs:label": "origin of materials",
+      "rdfs:comment": "Geographic origin information for materials.",
+      "rdfs:domain": "ace:Sustainability",
+      "rdfs:range": "ace:MaterialOriginObject"
+    },
+    {
+      "@id": "ace:en",
+      "@type": "rdf:Property",
+      "rdfs:label": "English content",
+      "rdfs:comment": "Content in English language.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "ace:de",
+      "@type": "rdf:Property",
+      "rdfs:label": "German content",
+      "rdfs:comment": "Content in German language.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "ace:fr",
+      "@type": "rdf:Property",
+      "rdfs:label": "French content",
+      "rdfs:comment": "Content in French language.",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "ace:carbonFootprintVerified",
+      "@type": "rdf:Property",
+      "rdfs:label": "carbon footprint verified",
+      "rdfs:comment": "Whether the carbon footprint has been verified by a third party (used in Verifiable Credentials).",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "ace:recycledContentVerified",
+      "@type": "rdf:Property",
+      "rdfs:label": "recycled content verified",
+      "rdfs:comment": "Whether the recycled content claim has been verified by a third party (used in Verifiable Credentials).",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "ace:certificationLevel",
+      "@type": "rdf:Property",
+      "rdfs:label": "certification level",
+      "rdfs:comment": "Level of certification achieved (e.g., Gold, Silver, Bronze) (used in Verifiable Credentials).",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "ace:SustainabilityCertificate",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Sustainability Certificate",
+      "rdfs:comment": "A type of Verifiable Credential specifically for sustainability certifications.",
+      "rdfs:subClassOf": "vc:VerifiableCredential"
+    }
+  ]
+}
