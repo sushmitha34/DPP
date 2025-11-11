@@ -1,52 +1,510 @@
 {
-    "$schema": "./DPP-generic-schema.json",
-    "@context": {
-        "dpp": "https://w3id.org/dpp/v1/",
-        "schema": "https://schema.org/",
-        "ace": "https://acespire.com/vocab/ace-dpp/",
-        "xsd": "http://www.w3.org/2001/XMLSchema#"
-    },
-    "@type": "ace:AceDigitalProductPassport",
-    "identification": {
-        "uniqueProductIdentifier": "ACE-12345",
-        "manufacturerName": "Acespire Consulting Solutions",
-        "dataCarrierType": "QR",
-        "productCategory": "electronics"
-    },
-    "product": {
-        "productName": "Smart Charger",
-        "classification": [
-            {
-                "classificationStandard": "UNSPSC",
-                "classificationID": "39121006"
-            }
-        ],
-        "productImage": {
-            "@type": "schema:ImageObject",
-            "contentUrl": "https://example.com/image.jpg"
-        }
-    },
-    "sustainability": {
-        "recycledContentPercent": 15,
-        "productEnvironmentalFootprint": {
-            "carbonFootprint": 1.2
-        }
-    },
-    "economicOperators": [
-        {
-            "role": "manufacturer",
-            "name": "Acespire Consulting Solutions",
-            "identifier": "EORIACE123"
-        }
-    ],
-    "metadata": {
-        "resolverUrl": "https://resolver.acespire.com/dpp/ACE-12345",
-        "accessRightsMetadata": {
-            "publicFields": [
-                "productName",
-                "productImage"
-            ]
-        },
-        "schemaVersion": "2.0.0"
+  "@context": [
+    "https://sushmitha34.github.io/DPP/ace-dpp-context.jsonld",
+    {
+      "dpp": "https://w3id.org/dpp/v1/",
+      "schema": "https://schema.org/",
+      "ace": "https://sushmitha34.github.io/DPP/terms#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "vc": "https://www.w3.org/2018/credentials#",
+      "sec": "https://w3id.org/security#"
     }
+  ],
+  "@type": "ace:AceDigitalProductPassport",
+  "@id": "https://example.com/dpp/laptop-abc123",
+  "identification": {
+    "uniqueProductIdentifier": "GTIN:04012345678901",
+    "dataCarrierType": "QR",
+    "productLevel": "item",
+    "manufacturerName": "TechCorp Electronics",
+    "manufacturerIdentifier": "EORI:DE123456789",
+    "manufacturingFacilityID": "FACILITY-EU-001",
+    "productionDate": "2024-03-15",
+    "productCategory": "Laptop Computers",
+    "batchNumber": "BATCH-2024-Q1-0042",
+    "serialNumber": "SN-LAP-2024-ABC123",
+    "linkToDigitalCopy": "https://example.com/dpp/laptop-abc123"
+  },
+  "product": {
+    "productName": {
+      "en": "TechCorp ProBook 15",
+      "de": "TechCorp ProBook 15",
+      "fr": "TechCorp ProBook 15"
+    },
+    "productDescription": {
+      "en": "High-performance 15-inch laptop with sustainable materials and excellent repairability",
+      "de": "Hochleistungs-15-Zoll-Laptop mit nachhaltigen Materialien und hervorragender Reparierbarkeit",
+      "fr": "Ordinateur portable 15 pouces haute performance avec matériaux durables et excellente réparabilité"
+    },
+    "brand": "TechCorp",
+    "modelNumber": "TC-PB15-2024",
+    "classification": [
+      {
+        "classificationStandard": "GPC",
+        "classificationID": "10000456",
+        "classificationDescription": "Laptop Computers"
+      },
+      {
+        "classificationStandard": "UNSPSC",
+        "classificationID": "43211507",
+        "classificationDescription": "Notebook computers"
+      }
+    ],
+    "productImage": {
+      "@type": "schema:ImageObject",
+      "contentUrl": "https://example.com/images/laptop-probook15.jpg",
+      "encodingFormat": "image/jpeg",
+      "caption": "TechCorp ProBook 15 - Front view",
+      "width": 1920,
+      "height": 1080
+    },
+    "physicalDimension": {
+      "width": 356,
+      "height": 23.5,
+      "length": 243,
+      "weight": 1850,
+      "volume": 2035
+    },
+    "technicalSpecifications": [
+      {
+        "parameter": "Processor",
+        "value": "Intel Core i7-13700H",
+        "unit": "GHz",
+        "testMethod": "Manufacturer specification"
+      },
+      {
+        "parameter": "RAM",
+        "value": 16,
+        "unit": "GB",
+        "testMethod": "Standard DDR5"
+      },
+      {
+        "parameter": "Storage",
+        "value": 512,
+        "unit": "GB SSD",
+        "testMethod": "NVMe PCIe 4.0"
+      },
+      {
+        "parameter": "Display",
+        "value": "15.6 inch Full HD IPS",
+        "unit": "inch",
+        "testMethod": "1920x1080 resolution"
+      },
+      {
+        "parameter": "Battery Capacity",
+        "value": 80,
+        "unit": "Wh",
+        "testMethod": "IEC 61960-3:2017"
+      }
+    ],
+    "energyEfficiencyClass": "A",
+    "durabilityExpectedLifetime": {
+      "value": 7,
+      "unit": "years",
+      "conditions": "Normal office use, regular maintenance"
+    },
+    "repairabilityIndex": {
+      "score": 8.5,
+      "methodology": "French Repairability Index 2024",
+      "calculationDate": "2024-03-20",
+      "repairInstructionsUrl": "https://example.com/repair/probook15",
+      "sparePartsAvailability": {
+        "availabilityPeriod": "10 years from production date",
+        "deliveryTime": "5-7 business days"
+      }
+    },
+    "warrantyInformation": {
+      "period": "24 months",
+      "coverage": "Manufacturing defects, battery performance guarantee",
+      "termsUrl": "https://example.com/warranty/terms",
+      "commercialGuarantee": true
+    }
+  },
+  "economicOperators": [
+    {
+      "role": "manufacturer",
+      "name": "TechCorp Electronics GmbH",
+      "identifier": "EORI:DE123456789",
+      "address": {
+        "streetAddress": "Innovation Park 42",
+        "city": "Munich",
+        "postalCode": "80333",
+        "country": "DE"
+      },
+      "contact": {
+        "email": "dpp@techcorp.com",
+        "phone": "+49-89-12345678",
+        "website": "https://www.techcorp.com"
+      }
+    },
+    {
+      "role": "distributor",
+      "name": "EuroTech Distribution SA",
+      "identifier": "VAT:FR12345678901",
+      "address": {
+        "streetAddress": "Avenue des Champs 100",
+        "city": "Paris",
+        "postalCode": "75008",
+        "country": "FR"
+      },
+      "contact": {
+        "email": "contact@eurotech-dist.fr",
+        "phone": "+33-1-23456789",
+        "website": "https://www.eurotech-distribution.fr"
+      }
+    }
+  ],
+  "sustainability": {
+    "materialComposition": [
+      {
+        "materialName": "Aluminum Alloy",
+        "casNumber": "7429-90-5",
+        "percentage": 45.5,
+        "recyclable": true,
+        "renewable": false
+      },
+      {
+        "materialName": "Recycled Plastic (PCR)",
+        "casNumber": "9003-07-0",
+        "percentage": 25.3,
+        "recyclable": true,
+        "renewable": false
+      },
+      {
+        "materialName": "Glass (Display)",
+        "casNumber": "65997-17-3",
+        "percentage": 8.2,
+        "recyclable": true,
+        "renewable": false
+      },
+      {
+        "materialName": "Copper",
+        "casNumber": "7440-50-8",
+        "percentage": 6.5,
+        "recyclable": true,
+        "renewable": false
+      },
+      {
+        "materialName": "Lithium-ion Battery Components",
+        "casNumber": "Multiple",
+        "percentage": 8.8,
+        "recyclable": true,
+        "renewable": false
+      },
+      {
+        "materialName": "Other electronic components",
+        "percentage": 5.7,
+        "recyclable": false,
+        "renewable": false
+      }
+    ],
+    "substancesOfConcern": [
+      {
+        "substanceName": "Lead",
+        "casNumber": "7439-92-1",
+        "ecNumber": "231-100-4",
+        "concentration": 0.08,
+        "location": "Solder joints in PCB",
+        "exemption": "RoHS Exemption 7(a) - Lead in solder for servers"
+      }
+    ],
+    "recycledContentPercent": 35.8,
+    "renewableContentPercent": 0,
+    "productEnvironmentalFootprint": {
+      "carbonFootprint": 285.5,
+      "unit": "kg CO2e",
+      "scope": {
+        "scope1": 12.3,
+        "scope2": 45.8,
+        "scope3": 227.4
+      },
+      "calculationMethod": "ISO 14067:2018 and EU PEF",
+      "pefCompliant": true,
+      "calculationDate": "2024-03-10",
+      "verificationBody": "TÜV SÜD",
+      "pcfDataQualityRating": "high"
+    },
+    "waterFootprint": {
+      "value": 18500,
+      "unit": "liters"
+    },
+    "criticalRawMaterials": [
+      {
+        "material": "Cobalt",
+        "quantity": 25.5,
+        "unit": "grams",
+        "origin": "Democratic Republic of Congo (certified conflict-free)"
+      },
+      {
+        "material": "Rare Earth Elements",
+        "quantity": 8.2,
+        "unit": "grams",
+        "origin": "China"
+      }
+    ],
+    "originOfMaterials": [
+      {
+        "material": "Aluminum",
+        "country": "DE",
+        "region": "Bavaria",
+        "percentage": 60
+      },
+      {
+        "material": "Aluminum",
+        "country": "NO",
+        "region": "Nordic region",
+        "percentage": 40
+      },
+      {
+        "material": "Recycled Plastics",
+        "country": "NL",
+        "region": "Rotterdam",
+        "percentage": 100
+      }
+    ],
+    "biodiversityImpact": {
+      "assessment": "Low impact - No raw materials sourced from protected areas",
+      "mitigation": "Reforestation program: 2 trees planted per unit sold"
+    }
+  },
+  "lifecycle": {
+    "maintenanceInstructionsUrl": "https://example.com/maintenance/probook15",
+    "maintenanceSchedule": [
+      {
+        "interval": "Every 6 months",
+        "taskDescription": "Clean cooling vents and check thermal paste",
+        "requiredParts": ["Thermal paste", "Cleaning cloth"]
+      },
+      {
+        "interval": "Every 12 months",
+        "taskDescription": "Check battery health and update firmware",
+        "requiredParts": []
+      }
+    ],
+    "maintenanceHistory": [
+      {
+        "date": "2024-09-15",
+        "performedBy": "TechCorp Service Center Munich",
+        "description": "Annual maintenance check, firmware update",
+        "partsReplaced": [],
+        "cost": 0,
+        "verificationHash": "sha256:a1b2c3d4e5f6..."
+      }
+    ],
+    "traceabilityEvents": [
+      {
+        "eventType": "commission",
+        "timestamp": "2024-03-15T08:30:00Z",
+        "location": "TechCorp Factory, Munich, Germany",
+        "geoCoordinates": {
+          "latitude": 48.1351,
+          "longitude": 11.5820
+        },
+        "actor": "TechCorp Electronics GmbH",
+        "actorIdentifier": "EORI:DE123456789",
+        "businessStep": "manufacturing",
+        "disposition": "active"
+      },
+      {
+        "eventType": "observation",
+        "timestamp": "2024-03-20T14:22:00Z",
+        "location": "Quality Control Department",
+        "actor": "TechCorp QC Team",
+        "actorIdentifier": "DEPT-QC-001",
+        "businessStep": "quality_inspection",
+        "disposition": "passed"
+      },
+      {
+        "eventType": "transaction",
+        "timestamp": "2024-04-05T10:15:00Z",
+        "location": "EuroTech Distribution Warehouse, Paris",
+        "geoCoordinates": {
+          "latitude": 48.8566,
+          "longitude": 2.3522
+        },
+        "actor": "EuroTech Distribution SA",
+        "actorIdentifier": "VAT:FR12345678901",
+        "businessStep": "distribution",
+        "disposition": "in_transit"
+      }
+    ],
+    "ownershipHistory": [
+      {
+        "transferDate": "2024-04-10",
+        "previousOwner": "EuroTech Distribution SA",
+        "currentOwner": "Corporate Customer - Acme Corp",
+        "transferReason": "sale"
+      }
+    ]
+  },
+  "endOfLife": {
+    "endOfLifeInstructions": {
+      "en": "Do not dispose of in household waste. Return to authorized collection point or retailer. Battery must be removed before recycling.",
+      "de": "Nicht im Hausmüll entsorgen. An autorisierte Sammelstelle oder Händler zurückgeben. Batterie muss vor dem Recycling entfernt werden.",
+      "fr": "Ne pas jeter avec les déchets ménagers. Retourner à un point de collecte agréé ou au détaillant. La batterie doit être retirée avant le recyclage."
+    },
+    "recyclingInfo": "All materials can be separated and recycled. Battery contains valuable materials requiring specialized recycling.",
+    "recyclabilityRate": 92.5,
+    "dismantlingInstructions": {
+      "instructionsUrl": "https://example.com/dismantling/probook15",
+      "toolsRequired": ["Phillips screwdriver #1", "Torx T5", "Plastic pry tool", "ESD wrist strap"],
+      "estimatedTime": "25 minutes"
+    },
+    "reverseLogisticsInstructions": "Contact customer service or visit any authorized retailer for free take-back",
+    "takeBackScheme": {
+      "available": true,
+      "provider": "TechCorp Circular Program",
+      "contactUrl": "https://example.com/takeback"
+    },
+    "eprContact": "epr-compliance@techcorp.com",
+    "wasteClassification": "WEEE 16 02 14* (discarded equipment containing hazardous components)"
+  },
+  "compliance": {
+    "complianceCertificates": [
+      {
+        "certificateId": "CE-TC-2024-001234",
+        "certificateType": "CE",
+        "issuer": "TÜV Rheinland",
+        "issueDate": "2024-03-01",
+        "expiryDate": "2029-03-01",
+        "scope": "EU Electromagnetic Compatibility and Low Voltage Directives",
+        "certificateUrl": "https://example.com/certificates/CE-TC-2024-001234.pdf",
+        "verificationUrl": "https://verify.tuv.com/CE-TC-2024-001234"
+      },
+      {
+        "certificateId": "ENERGY-STAR-8.0-TC-PB15",
+        "certificateType": "Energy Star",
+        "issuer": "EPA (Environmental Protection Agency)",
+        "issueDate": "2024-03-15",
+        "expiryDate": "2025-03-15",
+        "scope": "Energy Star 8.0 for Computers",
+        "certificateUrl": "https://example.com/certificates/energystar.pdf",
+        "verificationUrl": "https://www.energystar.gov/productfinder/"
+      }
+    ],
+    "testReportReferences": [
+      {
+        "reportId": "TR-EMC-2024-5678",
+        "testStandard": "EN 55032:2015, EN 55035:2017",
+        "labName": "TÜV Rheinland Test Lab",
+        "labAccreditation": "ISO/IEC 17025",
+        "testDate": "2024-02-28",
+        "reportUrl": "https://example.com/testreports/TR-EMC-2024-5678.pdf"
+      }
+    ],
+    "verifiableCredentials": [
+      {
+        "@context": [
+          "https://www.w3.org/ns/credentials/v2",
+          "https://w3id.org/security/suites/ed25519-2020/v1"
+        ],
+        "id": "https://example.com/credentials/sustainability/12345",
+        "type": ["VerifiableCredential", "SustainabilityCertificate"],
+        "issuer": {
+          "id": "did:web:certifier.example.com",
+          "name": "Green Electronics Certification Body"
+        },
+        "validFrom": "2024-03-20T00:00:00Z",
+        "validUntil": "2025-03-20T23:59:59Z",
+        "credentialSubject": {
+          "id": "https://example.com/dpp/laptop-abc123",
+          "certificationLevel": "Gold",
+          "carbonFootprintVerified": true,
+          "recycledContentVerified": true
+        },
+        "proof": {
+          "type": "Ed25519Signature2020",
+          "created": "2024-03-20T12:00:00Z",
+          "proofPurpose": "assertionMethod",
+          "verificationMethod": "did:web:certifier.example.com#key-1",
+          "proofValue": "z3FXQsZFxwmxzFdFxCcWvXzHmHNKkBxJPvnzkrQZnE7kRZJakmjZmP3KqQs8mwMQRzmjZwTxHBdHNKzBxRPdR"
+        }
+      }
+    ],
+    "conformityDeclaration": {
+      "declarationUrl": "https://example.com/conformity/TC-PB15-2024.pdf",
+      "euDeclarationNumber": "DOC-EU-TC-PB15-2024-001",
+      "harmonizedStandards": [
+        "EN 55032:2015+A11:2020",
+        "EN 55035:2017+A11:2020",
+        "EN IEC 63000:2018"
+      ]
+    }
+  },
+  "consumerInformation": {
+    "userManualUrl": {
+      "en": "https://example.com/manuals/probook15-en.pdf",
+      "de": "https://example.com/manuals/probook15-de.pdf",
+      "fr": "https://example.com/manuals/probook15-fr.pdf"
+    },
+    "safetyInstructions": {
+      "en": "Keep away from water. Do not disassemble. Use only approved chargers. Battery may explode if improperly replaced.",
+      "de": "Von Wasser fernhalten. Nicht zerlegen. Nur zugelassene Ladegeräte verwenden. Batterie kann bei unsachgemäßem Austausch explodieren.",
+      "fr": "Tenir à l'écart de l'eau. Ne pas démonter. Utiliser uniquement des chargeurs approuvés. La batterie peut exploser si elle est mal remplacée."
+    },
+    "customerSupport": {
+      "email": "support@techcorp.com",
+      "phone": "+49-89-12345678",
+      "website": "https://support.techcorp.com",
+      "chatUrl": "https://support.techcorp.com/chat"
+    },
+    "marketingClaims": [
+      {
+        "claim": "35% recycled materials",
+        "substantiation": "Verified by independent third-party material audit",
+        "verificationUrl": "https://example.com/verification/recycled-content"
+      },
+      {
+        "claim": "Carbon neutral manufacturing",
+        "substantiation": "Scope 1 and 2 emissions offset through certified carbon credits",
+        "verificationUrl": "https://example.com/verification/carbon-neutral"
+      }
+    ]
+  },
+  "metadata": {
+    "resolverUrl": "https://dpp-resolver.example.com/resolve/laptop-abc123",
+    "registryEntryId": "EU-DPP-2024-LAP-001234",
+    "euDppRegistryUrl": "https://eu-dpp-registry.europa.eu/entry/EU-DPP-2024-LAP-001234",
+    "storageLocation": "AWS S3 EU-Central-1",
+    "storageProvider": "Amazon Web Services",
+    "accessRightsMetadata": {
+      "publicFields": [
+        "identification",
+        "product.productName",
+        "product.brand",
+        "product.energyEfficiencyClass",
+        "product.repairabilityIndex",
+        "sustainability.recycledContentPercent",
+        "sustainability.productEnvironmentalFootprint.carbonFootprint",
+        "endOfLife",
+        "consumerInformation"
+      ],
+      "restrictedFields": [
+        "lifecycle.maintenanceHistory",
+        "lifecycle.ownershipHistory",
+        "economicOperators.contact.email"
+      ],
+      "regulatorAccessFields": [
+        "compliance.testReportReferences",
+        "sustainability.substancesOfConcern",
+        "product.technicalSpecifications"
+      ],
+      "authenticationMethod": "OAuth2"
+    },
+    "availabilityGuarantee": "15 years from production date",
+    "formatAndOntology": "JSON-LD",
+    "schemaVersion": "2.0.0",
+    "lastUpdated": "2024-11-11T10:30:00Z",
+    "dataQuality": {
+      "completeness": 95.5,
+      "accuracy": "verified",
+      "lastAuditDate": "2024-10-15"
+    },
+    "interoperability": {
+      "gs1Compatible": true,
+      "epcisVersion": "2.0",
+      "catenaxCompatible": false,
+      "pactCompliant": true
+    }
+  }
 }
