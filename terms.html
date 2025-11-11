@@ -1,1 +1,624 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Digital Product Passport Vocabulary</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .meta {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .meta dl {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+            margin: 0;
+        }
+        .meta dt {
+            font-weight: bold;
+            color: #667eea;
+        }
+        .meta dd {
+            margin: 0;
+        }
+        nav {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav h2 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: block;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: #f0f0f0;
+        }
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .term {
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+        .term h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .term-uri {
+            font-family: 'Courier New', monospace;
+            background: #e8e8e8;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .term-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-right: 10px;
+        }
+        .term-meta {
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .term-meta dt {
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        .term-meta dd {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+        code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            margin-top: 40px;
+        }
+        .compliance-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ace Digital Product Passport Vocabulary</h1>
+        <p class="subtitle">ESPR-Aligned Semantic Vocabulary for Digital Product Passports</p>
+    </header>
+
+    <div class="meta">
+        <dl>
+            <dt>Namespace URI:</dt>
+            <dd><code>https://sushmitha34.github.io/DPP/terms#</code></dd>
+            
+            <dt>Preferred Prefix:</dt>
+            <dd><code>ace</code></dd>
+            
+            <dt>Version:</dt>
+            <dd>2.0.0</dd>
+            
+            <dt>Last Updated:</dt>
+            <dd>November 11, 2025</dd>
+            
+            <dt>Status:</dt>
+            <dd>Development</dd>
+            
+            <dt>Compliance:</dt>
+            <dd>
+                <span class="compliance-badge">ESPR Articles 4-12</span>
+                <span class="compliance-badge">W3C VC Data Model 2.0</span>
+                <span class="compliance-badge">JSON-LD 1.1</span>
+            </dd>
+        </dl>
+    </div>
+
+    <nav>
+        <h2>Quick Navigation</h2>
+        <ul>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#identification">Identification Properties</a></li>
+            <li><a href="#product">Product Properties</a></li>
+            <li><a href="#sustainability">Sustainability Properties</a></li>
+            <li><a href="#lifecycle">Lifecycle Properties</a></li>
+            <li><a href="#compliance">Compliance Properties</a></li>
+            <li><a href="#multilingual">Multilingual Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>The Ace Digital Product Passport (DPP) Vocabulary is a comprehensive semantic vocabulary designed to support the European Union's Ecodesign for Sustainable Products Regulation (ESPR). This vocabulary provides standardized terms for describing product information, sustainability metrics, lifecycle data, and compliance documentation.</p>
+        
+        <p>This vocabulary is designed to be:</p>
+        <ul>
+            <li><strong>ESPR-Compliant</strong>: Covers all requirements from ESPR Articles 4-12</li>
+            <li><strong>Interoperable</strong>: Uses established vocabularies like Schema.org where applicable</li>
+            <li><strong>Machine-Readable</strong>: Full JSON-LD and RDF support</li>
+            <li><strong>Extensible</strong>: Can be extended for industry-specific requirements</li>
+        </ul>
+    </div>
+
+    <div id="classes" class="section">
+        <h2>Classes</h2>
+        
+        <div class="term">
+            <h3>AceDigitalProductPassport</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:AceDigitalProductPassport</div>
+            <p><strong>Description:</strong> The main class representing a complete Digital Product Passport. An instance of this class contains all required information about a product according to ESPR regulations.</p>
+            <dl class="term-meta">
+                <dt>URI:</dt>
+                <dd>https://sushmitha34.github.io/DPP/terms#AceDigitalProductPassport</dd>
+                <dt>Subclass of:</dt>
+                <dd>schema:Thing</dd>
+                <dt>ESPR Reference:</dt>
+                <dd>Articles 4-12</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>Identification</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:Identification</div>
+            <p><strong>Description:</strong> Container for product identification and traceability information.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Article 9 - Product Identification</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>ProductLayer</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:ProductLayer</div>
+            <p><strong>Description:</strong> Container for product characteristics, specifications, and technical details.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Articles 5-7 - Product Requirements</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>Sustainability</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:Sustainability</div>
+            <p><strong>Description:</strong> Container for environmental impact, material composition, and circularity information.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Articles 5-7 - Environmental Performance</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>Lifecycle</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:Lifecycle</div>
+            <p><strong>Description:</strong> Container for maintenance, service history, and supply chain traceability events.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Articles 7, 10 - Product Use and Traceability</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>EndOfLife</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:EndOfLife</div>
+            <p><strong>Description:</strong> Container for end-of-life instructions, recycling information, and take-back schemes.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Article 8 - End of Life Treatment</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>Compliance</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:Compliance</div>
+            <p><strong>Description:</strong> Container for certificates, test reports, and verifiable credentials.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Article 10 - Conformity Assessment</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>ConsumerInfo</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:ConsumerInfo</div>
+            <p><strong>Description:</strong> Container for consumer-facing information including manuals, safety instructions, and support contacts.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Article 8 - Consumer Information</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>Metadata</h3>
+            <span class="term-type">Class</span>
+            <div class="term-uri">ace:Metadata</div>
+            <p><strong>Description:</strong> Container for DPP metadata including access rights, registry information, and data quality indicators.</p>
+            <dl class="term-meta">
+                <dt>ESPR Reference:</dt>
+                <dd>Article 10 - Data Carrier and Registry</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="identification" class="section">
+        <h2>Identification Properties</h2>
+
+        <div class="term">
+            <h3>uniqueProductIdentifier</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:uniqueProductIdentifier</div>
+            <p><strong>Description:</strong> Globally unique identifier for the product (e.g., GTIN, UUID, or custom scheme).</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Identification</dd>
+                <dt>Range:</dt>
+                <dd>xsd:string</dd>
+                <dt>Required:</dt>
+                <dd>Yes</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>dataCarrierType</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:dataCarrierType</div>
+            <p><strong>Description:</strong> Type of machine-readable data carrier (QR, NFC, RFID, DataMatrix, DigitalWatermark, DotCode).</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Identification</dd>
+                <dt>Range:</dt>
+                <dd>xsd:string (enumerated)</dd>
+                <dt>ESPR Reference:</dt>
+                <dd>Article 9 - Data Carrier Requirements</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>productLevel</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:productLevel</div>
+            <p><strong>Description:</strong> Granularity level of the passport (item, batch, or model).</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Identification</dd>
+                <dt>Range:</dt>
+                <dd>xsd:string (enumerated: item, batch, model)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="product" class="section">
+        <h2>Product Properties</h2>
+
+        <div class="term">
+            <h3>energyEfficiencyClass</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:energyEfficiencyClass</div>
+            <p><strong>Description:</strong> EU Energy Label classification (A+++ to G).</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:ProductLayer</dd>
+                <dt>Range:</dt>
+                <dd>xsd:string (pattern: ^[A-G][+]{0,3}$)</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>repairabilityIndex</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:repairabilityIndex</div>
+            <p><strong>Description:</strong> Product repairability score and related information.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:ProductLayer</dd>
+                <dt>Range:</dt>
+                <dd>Structured object with score (0-10), methodology, calculation date, repair instructions URL, and spare parts availability</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>durabilityExpectedLifetime</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:durabilityExpectedLifetime</div>
+            <p><strong>Description:</strong> Expected product lifetime under specified conditions.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:ProductLayer</dd>
+                <dt>Range:</dt>
+                <dd>Structured object with value, unit (years/months/cycles/hours), and conditions</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="sustainability" class="section">
+        <h2>Sustainability Properties</h2>
+
+        <div class="term">
+            <h3>recycledContentPercent</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:recycledContentPercent</div>
+            <p><strong>Description:</strong> Percentage of recycled materials by weight.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Sustainability</dd>
+                <dt>Range:</dt>
+                <dd>xsd:decimal (0-100)</dd>
+                <dt>Required:</dt>
+                <dd>Yes</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>carbonFootprint</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:carbonFootprint</div>
+            <p><strong>Description:</strong> Total carbon footprint in kg CO2e.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Sustainability / productEnvironmentalFootprint</dd>
+                <dt>Range:</dt>
+                <dd>xsd:decimal</dd>
+                <dt>Required:</dt>
+                <dd>Yes (within productEnvironmentalFootprint)</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>materialComposition</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:materialComposition</div>
+            <p><strong>Description:</strong> List of materials composing the product with percentages, CAS numbers, and recyclability indicators.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Sustainability</dd>
+                <dt>Range:</dt>
+                <dd>Array of material objects</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>substancesOfConcern</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:substancesOfConcern</div>
+            <p><strong>Description:</strong> REACH SVHC and other hazardous substances present in the product.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Sustainability</dd>
+                <dt>Range:</dt>
+                <dd>Array of substance objects with CAS/EC numbers, concentration, and location</dd>
+                <dt>ESPR Reference:</dt>
+                <dd>Article 7(2)(b) - Substances of Concern</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>criticalRawMaterials</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:criticalRawMaterials</div>
+            <p><strong>Description:</strong> EU Critical Raw Materials List items present in the product.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Sustainability</dd>
+                <dt>Range:</dt>
+                <dd>Array of material objects with quantities and origin information</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="lifecycle" class="section">
+        <h2>Lifecycle Properties</h2>
+
+        <div class="term">
+            <h3>maintenanceHistory</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:maintenanceHistory</div>
+            <p><strong>Description:</strong> Record of maintenance and service events performed on the product.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Lifecycle</dd>
+                <dt>Range:</dt>
+                <dd>Array of maintenance event objects</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>traceabilityEvents</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:traceabilityEvents</div>
+            <p><strong>Description:</strong> Supply chain events following GS1 EPCIS standard.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Lifecycle</dd>
+                <dt>Range:</dt>
+                <dd>Array of EPCIS-compatible event objects</dd>
+                <dt>Standards:</dt>
+                <dd>Compatible with GS1 EPCIS 2.0</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>ownershipHistory</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:ownershipHistory</div>
+            <p><strong>Description:</strong> Record of ownership transfers throughout the product lifecycle.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Lifecycle</dd>
+                <dt>Range:</dt>
+                <dd>Array of ownership transfer objects</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="compliance" class="section">
+        <h2>Compliance Properties</h2>
+
+        <div class="term">
+            <h3>complianceCertificates</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:complianceCertificates</div>
+            <p><strong>Description:</strong> List of compliance certificates (CE, ISO, Energy Star, etc.).</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Compliance</dd>
+                <dt>Range:</dt>
+                <dd>Array of certificate objects</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>testReportReferences</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">dpp:testReportReferences</div>
+            <p><strong>Description:</strong> References to third-party test reports.</p>
+            <dl class="term-meta">
+                <dt>Domain:</dt>
+                <dd>ace:Compliance</dd>
+                <dt>Range:</dt>
+                <dd>Array of test report reference objects</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="multilingual" class="section">
+        <h2>Multilingual Support Properties</h2>
+
+        <div class="term">
+            <h3>Language Code Properties</h3>
+            <span class="term-type">Property Pattern</span>
+            <p><strong>Description:</strong> Properties for multilingual content use ISO 639-1 language codes (e.g., en, de, fr). These appear as property names within multilingual fields.</p>
+            <dl class="term-meta">
+                <dt>Pattern:</dt>
+                <dd>^[a-z]{2}(-[A-Z]{2})?$</dd>
+                <dt>Examples:</dt>
+                <dd>ace:en, ace:de, ace:fr, ace:en-US, ace:en-GB</dd>
+                <dt>Usage:</dt>
+                <dd>Used for productName, productDescription, endOfLifeInstructions, safetyInstructions, and userManualUrl</dd>
+            </dl>
+        </div>
+
+        <div class="term">
+            <h3>en (English)</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">ace:en</div>
+            <p><strong>Description:</strong> English language content.</p>
+        </div>
+
+        <div class="term">
+            <h3>de (German)</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">ace:de</div>
+            <p><strong>Description:</strong> German language content.</p>
+        </div>
+
+        <div class="term">
+            <h3>fr (French)</h3>
+            <span class="term-type">Property</span>
+            <div class="term-uri">ace:fr</div>
+            <p><strong>Description:</strong> French language content.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Additional Terms</h2>
+        <p>The vocabulary includes many additional specialized terms. Key categories include:</p>
+        <ul>
+            <li><strong>Verification and Quality:</strong> verificationBody, pcfDataQualityRating, dataQuality, accuracy, completeness</li>
+            <li><strong>End of Life:</strong> recyclabilityRate, dismantlingInstructions, takeBackScheme, eprContact, wasteClassification</li>
+            <li><strong>Metadata:</strong> resolverUrl, registryEntryId, accessRightsMetadata, interoperability, storageLocation</li>
+            <li><strong>Custom Claims:</strong> carbonFootprintVerified, recycledContentVerified, certificationLevel (for Verifiable Credentials)</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p><strong>Ace Digital Product Passport Vocabulary v2.0.0</strong></p>
+        <p>Namespace: <code>https://sushmitha34.github.io/DPP/terms#</code></p>
+        <p>For technical documentation and JSON-LD context, see: <a href="https://sushmitha34.github.io/DPP/ace-dpp-context.jsonld">ace-dpp-context.jsonld</a></p>
+        <p>For JSON Schema validation, see: <a href="https://sushmitha34.github.io/DPP/DPP-generic-schema.json">DPP-generic-schema.json</a></p>
+    </footer>
+</body>
+</html>
