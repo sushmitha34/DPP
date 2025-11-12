@@ -1,456 +1,449 @@
 {
-  "@context": {
-    "@vocab": "https://sushmitha34.github.io/DPP/terms#",
-    "dpp": "https://w3id.org/dpp/v1/",
-    "schema": "https://schema.org/",
-    "ace": "https://sushmitha34.github.io/DPP/terms#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "vc": "https://www.w3.org/2018/credentials#",
-    "sec": "https://w3id.org/security#",
-    
-    "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
-    "Identification": "ace:Identification",
-    "ProductLayer": "ace:ProductLayer",
-    "EconomicOperators": "ace:EconomicOperators",
-    "Sustainability": "ace:Sustainability",
-    "Lifecycle": "ace:Lifecycle",
-    "EndOfLife": "ace:EndOfLife",
-    "Compliance": "ace:Compliance",
-    "ConsumerInfo": "ace:ConsumerInfo",
-    "Metadata": "ace:Metadata",
-    
-    "identification": "dpp:identification",
-    "uniqueProductIdentifier": "dpp:uniqueProductIdentifier",
-    "dataCarrierType": "dpp:dataCarrierType",
-    "productLevel": "dpp:productLevel",
-    "manufacturerName": {
-      "@id": "schema:manufacturer",
-      "@type": "xsd:string"
-    },
-    "manufacturerIdentifier": "schema:identifier",
-    "manufacturingFacilityID": "schema:location",
-    "productionDate": {
-      "@id": "schema:productionDate",
-      "@type": "xsd:date"
-    },
-    "productCategory": "schema:category",
-    "batchNumber": "schema:batchNumber",
-    "serialNumber": "schema:serialNumber",
-    "linkToDigitalCopy": {
-      "@id": "schema:url",
-      "@type": "@id"
-    },
-    
-    "product": "dpp:product",
-    "productName": "schema:name",
-    "productDescription": "schema:description",
-    "brand": "schema:brand",
-    "modelNumber": "schema:model",
-    "classification": "dpp:classification",
-    "classificationStandard": "dpp:classificationStandard",
-    "classificationID": "dpp:classificationID",
-    "classificationDescription": "dpp:classificationDescription",
-    "productImage": {
-      "@id": "schema:image",
-      "@type": "@id"
-    },
-    "contentUrl": {
-      "@id": "schema:contentUrl",
-      "@type": "@id"
-    },
-    "encodingFormat": "schema:encodingFormat",
-    "caption": "schema:caption",
-    "width": {
-      "@id": "schema:width",
-      "@type": "xsd:integer"
-    },
-    "height": {
-      "@id": "schema:height",
-      "@type": "xsd:integer"
-    },
-    "physicalDimension": "schema:size",
-    "length": {
-      "@id": "dpp:length",
-      "@type": "xsd:decimal"
-    },
-    "weight": {
-      "@id": "schema:weight",
-      "@type": "xsd:decimal"
-    },
-    "volume": {
-      "@id": "dpp:volume",
-      "@type": "xsd:decimal"
-    },
-    "technicalSpecifications": "schema:additionalProperty",
-    "parameter": "dpp:parameter",
-    "value": "schema:value",
-    "unit": "schema:unitCode",
-    "testMethod": "dpp:testMethod",
-    "energyEfficiencyClass": "dpp:energyEfficiencyClass",
-    "durabilityExpectedLifetime": "dpp:durabilityExpectedLifetime",
-    "conditions": "dpp:conditions",
-    "repairabilityIndex": "dpp:repairabilityIndex",
-    "score": {
-      "@id": "dpp:score",
-      "@type": "xsd:decimal"
-    },
-    "methodology": "dpp:methodology",
-    "calculationDate": {
-      "@id": "dpp:calculationDate",
-      "@type": "xsd:date"
-    },
-    "repairInstructionsUrl": {
-      "@id": "dpp:repairInstructionsUrl",
-      "@type": "@id"
-    },
-    "sparePartsAvailability": "dpp:sparePartsAvailability",
-    "availabilityPeriod": "dpp:availabilityPeriod",
-    "deliveryTime": "dpp:deliveryTime",
-    "warrantyInformation": "schema:warranty",
-    "period": "schema:duration",
-    "coverage": "dpp:coverage",
-    "termsUrl": {
-      "@id": "dpp:termsUrl",
-      "@type": "@id"
-    },
-    "commercialGuarantee": {
-      "@id": "dpp:commercialGuarantee",
-      "@type": "xsd:boolean"
-    },
-    
-    "sustainability": "dpp:sustainability",
-    "materialComposition": {
-      "@id": "dpp:materialComposition",
-      "@container": "@list"
-    },
-    "materialName": "dpp:materialName",
-    "casNumber": "dpp:casNumber",
-    "percentage": {
-      "@id": "dpp:percentage",
-      "@type": "xsd:decimal"
-    },
-    "recyclable": {
-      "@id": "dpp:recyclable",
-      "@type": "xsd:boolean"
-    },
-    "renewable": {
-      "@id": "dpp:renewable",
-      "@type": "xsd:boolean"
-    },
-    "substancesOfConcern": {
-      "@id": "dpp:substancesOfConcern",
-      "@container": "@list"
-    },
-    "substanceName": "dpp:substanceName",
-    "ecNumber": "dpp:ecNumber",
-    "concentration": {
-      "@id": "dpp:concentration",
-      "@type": "xsd:decimal"
-    },
-    "location": "schema:location",
-    "exemption": "dpp:exemption",
-    "recycledContentPercent": {
-      "@id": "dpp:recycledContentPercent",
-      "@type": "xsd:decimal"
-    },
-    "renewableContentPercent": {
-      "@id": "dpp:renewableContentPercent",
-      "@type": "xsd:decimal"
-    },
-    "productEnvironmentalFootprint": "dpp:productEnvironmentalFootprint",
-    "carbonFootprint": {
-      "@id": "dpp:carbonFootprint",
-      "@type": "xsd:decimal"
-    },
-    "scope": "dpp:scope",
-    "scope1": {
-      "@id": "dpp:scope1",
-      "@type": "xsd:decimal"
-    },
-    "scope2": {
-      "@id": "dpp:scope2",
-      "@type": "xsd:decimal"
-    },
-    "scope3": {
-      "@id": "dpp:scope3",
-      "@type": "xsd:decimal"
-    },
-    "calculationMethod": "dpp:calculationMethod",
-    "pefCompliant": {
-      "@id": "dpp:pefCompliant",
-      "@type": "xsd:boolean"
-    },
-    "verificationBody": "dpp:verificationBody",
-    "pcfDataQualityRating": "dpp:pcfDataQualityRating",
-    "waterFootprint": "dpp:waterFootprint",
-    "criticalRawMaterials": {
-      "@id": "dpp:criticalRawMaterials",
-      "@container": "@list"
-    },
-    "material": "dpp:material",
-    "quantity": {
-      "@id": "schema:quantity",
-      "@type": "xsd:decimal"
-    },
-    "origin": "dpp:origin",
-    "originOfMaterials": {
-      "@id": "dpp:originOfMaterials",
-      "@container": "@list"
-    },
-    "country": "schema:addressCountry",
-    "region": "schema:addressRegion",
-    "biodiversityImpact": "dpp:biodiversityImpact",
-    "assessment": "dpp:assessment",
-    "mitigation": "dpp:mitigation",
-    
-    "economicOperators": {
-      "@id": "dpp:economicOperators",
-      "@container": "@list"
-    },
-    "role": "schema:roleName",
-    "name": "schema:name",
-    "identifier": "schema:identifier",
-    "address": "schema:address",
-    "streetAddress": "schema:streetAddress",
-    "city": "schema:addressLocality",
-    "postalCode": "schema:postalCode",
-    "contact": "schema:contactPoint",
-    "email": "schema:email",
-    "phone": "schema:telephone",
-    "website": {
-      "@id": "schema:url",
-      "@type": "@id"
-    },
-    
-    "lifecycle": "dpp:lifecycle",
-    "maintenanceInstructionsUrl": {
-      "@id": "dpp:maintenanceInstructionsUrl",
-      "@type": "@id"
-    },
-    "maintenanceSchedule": {
-      "@id": "dpp:maintenanceSchedule",
-      "@container": "@list"
-    },
-    "interval": "dpp:interval",
-    "taskDescription": "schema:description",
-    "requiredParts": "dpp:requiredParts",
-    "maintenanceHistory": {
-      "@id": "dpp:maintenanceHistory",
-      "@container": "@list"
-    },
-    "date": {
-      "@id": "schema:date",
-      "@type": "xsd:date"
-    },
-    "performedBy": "dpp:performedBy",
-    "description": "schema:description",
-    "partsReplaced": "dpp:partsReplaced",
-    "cost": {
-      "@id": "schema:price",
-      "@type": "xsd:decimal"
-    },
-    "verificationHash": "dpp:verificationHash",
-    "traceabilityEvents": {
-      "@id": "dpp:traceabilityEvents",
-      "@container": "@list"
-    },
-    "eventType": "dpp:eventType",
-    "timestamp": {
-      "@id": "schema:startTime",
-      "@type": "xsd:dateTime"
-    },
-    "geoCoordinates": "schema:geo",
-    "latitude": {
-      "@id": "schema:latitude",
-      "@type": "xsd:decimal"
-    },
-    "longitude": {
-      "@id": "schema:longitude",
-      "@type": "xsd:decimal"
-    },
-    "actor": "schema:agent",
-    "actorIdentifier": "dpp:actorIdentifier",
-    "businessStep": "dpp:businessStep",
-    "disposition": "dpp:disposition",
-    "ownershipHistory": {
-      "@id": "dpp:ownershipHistory",
-      "@container": "@list"
-    },
-    "transferDate": {
-      "@id": "dpp:transferDate",
-      "@type": "xsd:date"
-    },
-    "previousOwner": "dpp:previousOwner",
-    "currentOwner": "dpp:currentOwner",
-    "transferReason": "dpp:transferReason",
-    
-    "endOfLife": "dpp:endOfLife",
-    "endOfLifeInstructions": "dpp:endOfLifeInstructions",
-    "recyclingInfo": "dpp:recyclingInfo",
-    "recyclabilityRate": {
-      "@id": "dpp:recyclabilityRate",
-      "@type": "xsd:decimal"
-    },
-    "dismantlingInstructions": "dpp:dismantlingInstructions",
-    "instructionsUrl": {
-      "@id": "dpp:instructionsUrl",
-      "@type": "@id"
-    },
-    "toolsRequired": "dpp:toolsRequired",
-    "estimatedTime": "dpp:estimatedTime",
-    "reverseLogisticsInstructions": "dpp:reverseLogisticsInstructions",
-    "takeBackScheme": "dpp:takeBackScheme",
-    "available": {
-      "@id": "dpp:available",
-      "@type": "xsd:boolean"
-    },
-    "provider": "schema:provider",
-    "contactUrl": {
-      "@id": "dpp:contactUrl",
-      "@type": "@id"
-    },
-    "eprContact": "dpp:eprContact",
-    "wasteClassification": "dpp:wasteClassification",
-    
-    "compliance": "dpp:compliance",
-    "complianceCertificates": {
-      "@id": "dpp:complianceCertificates",
-      "@container": "@list"
-    },
-    "certificateId": "dpp:certificateId",
-    "certificateType": "dpp:certificateType",
-    "issuer": "schema:issuer",
-    "issueDate": {
-      "@id": "schema:dateIssued",
-      "@type": "xsd:date"
-    },
-    "expiryDate": {
-      "@id": "schema:expires",
-      "@type": "xsd:date"
-    },
-    "certificateUrl": {
-      "@id": "dpp:certificateUrl",
-      "@type": "@id"
-    },
-    "verificationUrl": {
-      "@id": "dpp:verificationUrl",
-      "@type": "@id"
-    },
-    "testReportReferences": {
-      "@id": "dpp:testReportReferences",
-      "@container": "@list"
-    },
-    "reportId": "dpp:reportId",
-    "testStandard": "dpp:testStandard",
-    "labName": "dpp:labName",
-    "labAccreditation": "dpp:labAccreditation",
-    "testDate": {
-      "@id": "dpp:testDate",
-      "@type": "xsd:date"
-    },
-    "reportUrl": {
-      "@id": "dpp:reportUrl",
-      "@type": "@id"
-    },
-    "verifiableCredentials": {
-      "@id": "vc:verifiableCredential",
-      "@container": "@list"
-    },
-    "credentialSubject": "vc:credentialSubject",
-    "validFrom": {
-      "@id": "vc:validFrom",
-      "@type": "xsd:dateTime"
-    },
-    "validUntil": {
-      "@id": "vc:validUntil",
-      "@type": "xsd:dateTime"
-    },
-    "credentialStatus": "vc:credentialStatus",
-    "proof": "sec:proof",
-    "type": "@type",
-    "created": {
-      "@id": "sec:created",
-      "@type": "xsd:dateTime"
-    },
-    "proofPurpose": "sec:proofPurpose",
-    "verificationMethod": {
-      "@id": "sec:verificationMethod",
-      "@type": "@id"
-    },
-    "proofValue": "sec:proofValue",
-    "conformityDeclaration": "dpp:conformityDeclaration",
-    "declarationUrl": {
-      "@id": "dpp:declarationUrl",
-      "@type": "@id"
-    },
-    "euDeclarationNumber": "dpp:euDeclarationNumber",
-    "harmonizedStandards": "dpp:harmonizedStandards",
-    
-    "consumerInformation": "dpp:consumerInformation",
-    "userManualUrl": {
-      "@id": "dpp:userManualUrl",
-      "@type": "@id"
-    },
-    "safetyInstructions": "schema:safetyConsideration",
-    "customerSupport": "schema:contactPoint",
-    "chatUrl": {
-      "@id": "dpp:chatUrl",
-      "@type": "@id"
-    },
-    "marketingClaims": {
-      "@id": "dpp:marketingClaims",
-      "@container": "@list"
-    },
-    "claim": "dpp:claim",
-    "substantiation": "dpp:substantiation",
-    
-    "metadata": "dpp:metadata",
-    "resolverUrl": {
-      "@id": "dpp:resolverUrl",
-      "@type": "@id"
-    },
-    "registryEntryId": "dpp:registryEntryId",
-    "euDppRegistryUrl": {
-      "@id": "dpp:euDppRegistryUrl",
-      "@type": "@id"
-    },
-    "storageLocation": "dpp:storageLocation",
-    "storageProvider": "dpp:storageProvider",
-    "accessRightsMetadata": "dpp:accessRightsMetadata",
-    "publicFields": "dpp:publicFields",
-    "restrictedFields": "dpp:restrictedFields",
-    "regulatorAccessFields": "dpp:regulatorAccessFields",
-    "authenticationMethod": "dpp:authenticationMethod",
-    "availabilityGuarantee": "dpp:availabilityGuarantee",
-    "formatAndOntology": "dpp:formatAndOntology",
-    "schemaVersion": "schema:schemaVersion",
-    "lastUpdated": {
-      "@id": "schema:dateModified",
-      "@type": "xsd:dateTime"
-    },
-    "dataQuality": "dpp:dataQuality",
-    "completeness": {
-      "@id": "dpp:completeness",
-      "@type": "xsd:decimal"
-    },
-    "accuracy": "dpp:accuracy",
-    "lastAuditDate": {
-      "@id": "dpp:lastAuditDate",
-      "@type": "xsd:date"
-    },
-    "interoperability": "dpp:interoperability",
-    "gs1Compatible": {
-      "@id": "dpp:gs1Compatible",
-      "@type": "xsd:boolean"
-    },
-    "epcisVersion": "dpp:epcisVersion",
-    "catenaxCompatible": {
-      "@id": "dpp:catenaxCompatible",
-      "@type": "xsd:boolean"
-    },
-    "pactCompliant": {
-      "@id": "dpp:pactCompliant",
-      "@type": "xsd:boolean"
+    "@context": {
+        "@vocab": "https://sushmitha34.github.io/DPP/terms#",
+        "dpp": "https://w3id.org/dpp/v1/",
+        "schema": "https://schema.org/",
+        "ace": "https://sushmitha34.github.io/DPP/terms#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "vc": "https://www.w3.org/2018/credentials#",
+        "sec": "https://w3id.org/security#",
+        "AceDigitalProductPassport": "ace:AceDigitalProductPassport",
+        "Identification": "ace:Identification",
+        "ProductLayer": "ace:ProductLayer",
+        "EconomicOperators": "ace:EconomicOperators",
+        "Sustainability": "ace:Sustainability",
+        "Lifecycle": "ace:Lifecycle",
+        "EndOfLife": "ace:EndOfLife",
+        "Compliance": "ace:Compliance",
+        "ConsumerInfo": "ace:ConsumerInfo",
+        "Metadata": "ace:Metadata",
+        "identification": "dpp:identification",
+        "uniqueProductIdentifier": "dpp:uniqueProductIdentifier",
+        "dataCarrierType": "dpp:dataCarrierType",
+        "productLevel": "dpp:productLevel",
+        "manufacturerName": {
+            "@id": "schema:manufacturer",
+            "@type": "xsd:string"
+        },
+        "manufacturerIdentifier": "schema:identifier",
+        "manufacturingFacilityID": "schema:location",
+        "productionDate": {
+            "@id": "schema:productionDate",
+            "@type": "xsd:date"
+        },
+        "productCategory": "schema:category",
+        "batchNumber": "schema:batchNumber",
+        "serialNumber": "schema:serialNumber",
+        "linkToDigitalCopy": {
+            "@id": "schema:url",
+            "@type": "@id"
+        },
+        "product": "dpp:product",
+        "productName": {
+            "@id": "schema:name",
+            "@container": "@language"
+        },
+        "productDescription": "schema:description",
+        "brand": "schema:brand",
+        "modelNumber": "schema:model",
+        "classification": "dpp:classification",
+        "classificationStandard": "dpp:classificationStandard",
+        "classificationID": "dpp:classificationID",
+        "classificationDescription": "dpp:classificationDescription",
+        "productImage": {
+            "@id": "schema:image",
+            "@type": "@id"
+        },
+        "contentUrl": {
+            "@id": "schema:contentUrl",
+            "@type": "@id"
+        },
+        "encodingFormat": "schema:encodingFormat",
+        "caption": "schema:caption",
+        "width": {
+            "@id": "schema:width",
+            "@type": "xsd:integer"
+        },
+        "height": {
+            "@id": "schema:height",
+            "@type": "xsd:decimal"
+        },
+        "physicalDimension": "schema:size",
+        "length": {
+            "@id": "dpp:length",
+            "@type": "xsd:decimal"
+        },
+        "weight": {
+            "@id": "schema:weight",
+            "@type": "xsd:decimal"
+        },
+        "volume": {
+            "@id": "dpp:volume",
+            "@type": "xsd:decimal"
+        },
+        "technicalSpecifications": "schema:additionalProperty",
+        "parameter": "dpp:parameter",
+        "value": "schema:value",
+        "unit": "schema:unitCode",
+        "testMethod": "dpp:testMethod",
+        "energyEfficiencyClass": "dpp:energyEfficiencyClass",
+        "durabilityExpectedLifetime": "dpp:durabilityExpectedLifetime",
+        "conditions": "dpp:conditions",
+        "repairabilityIndex": "dpp:repairabilityIndex",
+        "score": {
+            "@id": "dpp:score",
+            "@type": "xsd:decimal"
+        },
+        "methodology": "dpp:methodology",
+        "calculationDate": {
+            "@id": "dpp:calculationDate",
+            "@type": "xsd:date"
+        },
+        "repairInstructionsUrl": {
+            "@id": "dpp:repairInstructionsUrl",
+            "@type": "@id"
+        },
+        "sparePartsAvailability": "dpp:sparePartsAvailability",
+        "availabilityPeriod": "dpp:availabilityPeriod",
+        "deliveryTime": "dpp:deliveryTime",
+        "warrantyInformation": "schema:warranty",
+        "period": "schema:duration",
+        "coverage": "dpp:coverage",
+        "termsUrl": {
+            "@id": "dpp:termsUrl",
+            "@type": "@id"
+        },
+        "commercialGuarantee": {
+            "@id": "dpp:commercialGuarantee",
+            "@type": "xsd:boolean"
+        },
+        "sustainability": "dpp:sustainability",
+        "materialComposition": {
+            "@id": "dpp:materialComposition",
+            "@container": "@list"
+        },
+        "materialName": "dpp:materialName",
+        "casNumber": "dpp:casNumber",
+        "percentage": {
+            "@id": "dpp:percentage",
+            "@type": "xsd:decimal"
+        },
+        "recyclable": {
+            "@id": "dpp:recyclable",
+            "@type": "xsd:boolean"
+        },
+        "renewable": {
+            "@id": "dpp:renewable",
+            "@type": "xsd:boolean"
+        },
+        "substancesOfConcern": {
+            "@id": "dpp:substancesOfConcern",
+            "@container": "@list"
+        },
+        "substanceName": "dpp:substanceName",
+        "ecNumber": "dpp:ecNumber",
+        "concentration": {
+            "@id": "dpp:concentration",
+            "@type": "xsd:decimal"
+        },
+        "location": "schema:location",
+        "exemption": "dpp:exemption",
+        "recycledContentPercent": {
+            "@id": "dpp:recycledContentPercent",
+            "@type": "xsd:decimal"
+        },
+        "renewableContentPercent": {
+            "@id": "dpp:renewableContentPercent",
+            "@type": "xsd:decimal"
+        },
+        "productEnvironmentalFootprint": "dpp:productEnvironmentalFootprint",
+        "carbonFootprint": {
+            "@id": "dpp:carbonFootprint",
+            "@type": "xsd:decimal"
+        },
+        "scope": "dpp:scope",
+        "scope1": {
+            "@id": "dpp:scope1",
+            "@type": "xsd:decimal"
+        },
+        "scope2": {
+            "@id": "dpp:scope2",
+            "@type": "xsd:decimal"
+        },
+        "scope3": {
+            "@id": "dpp:scope3",
+            "@type": "xsd:decimal"
+        },
+        "calculationMethod": "dpp:calculationMethod",
+        "pefCompliant": {
+            "@id": "dpp:pefCompliant",
+            "@type": "xsd:boolean"
+        },
+        "verificationBody": "dpp:verificationBody",
+        "pcfDataQualityRating": "dpp:pcfDataQualityRating",
+        "waterFootprint": "dpp:waterFootprint",
+        "criticalRawMaterials": {
+            "@id": "dpp:criticalRawMaterials",
+            "@container": "@list"
+        },
+        "material": "dpp:material",
+        "quantity": {
+            "@id": "schema:quantity",
+            "@type": "xsd:decimal"
+        },
+        "origin": "dpp:origin",
+        "originOfMaterials": {
+            "@id": "dpp:originOfMaterials",
+            "@container": "@list"
+        },
+        "country": "schema:addressCountry",
+        "region": "schema:addressRegion",
+        "biodiversityImpact": "dpp:biodiversityImpact",
+        "assessment": "dpp:assessment",
+        "mitigation": "dpp:mitigation",
+        "economicOperators": {
+            "@id": "dpp:economicOperators",
+            "@container": "@list"
+        },
+        "role": "schema:roleName",
+        "name": "schema:name",
+        "identifier": "schema:identifier",
+        "address": "schema:address",
+        "streetAddress": "schema:streetAddress",
+        "city": "schema:addressLocality",
+        "postalCode": "schema:postalCode",
+        "contact": "schema:contactPoint",
+        "email": "schema:email",
+        "phone": "schema:telephone",
+        "website": {
+            "@id": "schema:url",
+            "@type": "@id"
+        },
+        "lifecycle": "dpp:lifecycle",
+        "maintenanceInstructionsUrl": {
+            "@id": "dpp:maintenanceInstructionsUrl",
+            "@type": "@id"
+        },
+        "maintenanceSchedule": {
+            "@id": "dpp:maintenanceSchedule",
+            "@container": "@list"
+        },
+        "interval": "dpp:interval",
+        "taskDescription": "schema:description",
+        "requiredParts": "dpp:requiredParts",
+        "maintenanceHistory": {
+            "@id": "dpp:maintenanceHistory",
+            "@container": "@list"
+        },
+        "date": {
+            "@id": "schema:date",
+            "@type": "xsd:date"
+        },
+        "performedBy": "dpp:performedBy",
+        "description": "schema:description",
+        "partsReplaced": "dpp:partsReplaced",
+        "cost": {
+            "@id": "schema:price",
+            "@type": "xsd:decimal"
+        },
+        "verificationHash": "dpp:verificationHash",
+        "traceabilityEvents": {
+            "@id": "dpp:traceabilityEvents",
+            "@container": "@list"
+        },
+        "eventType": "dpp:eventType",
+        "timestamp": {
+            "@id": "schema:startTime",
+            "@type": "xsd:dateTime"
+        },
+        "geoCoordinates": "schema:geo",
+        "latitude": {
+            "@id": "schema:latitude",
+            "@type": "xsd:decimal"
+        },
+        "longitude": {
+            "@id": "schema:longitude",
+            "@type": "xsd:decimal"
+        },
+        "actor": "schema:agent",
+        "actorIdentifier": "dpp:actorIdentifier",
+        "businessStep": "dpp:businessStep",
+        "disposition": "dpp:disposition",
+        "ownershipHistory": {
+            "@id": "dpp:ownershipHistory",
+            "@container": "@list"
+        },
+        "transferDate": {
+            "@id": "dpp:transferDate",
+            "@type": "xsd:date"
+        },
+        "previousOwner": "dpp:previousOwner",
+        "currentOwner": "dpp:currentOwner",
+        "transferReason": "dpp:transferReason",
+        "endOfLife": "dpp:endOfLife",
+        "endOfLifeInstructions": "dpp:endOfLifeInstructions",
+        "recyclingInfo": "dpp:recyclingInfo",
+        "recyclabilityRate": {
+            "@id": "dpp:recyclabilityRate",
+            "@type": "xsd:decimal"
+        },
+        "dismantlingInstructions": "dpp:dismantlingInstructions",
+        "instructionsUrl": {
+            "@id": "dpp:instructionsUrl",
+            "@type": "@id"
+        },
+        "toolsRequired": "dpp:toolsRequired",
+        "estimatedTime": "dpp:estimatedTime",
+        "reverseLogisticsInstructions": "dpp:reverseLogisticsInstructions",
+        "takeBackScheme": "dpp:takeBackScheme",
+        "available": {
+            "@id": "dpp:available",
+            "@type": "xsd:boolean"
+        },
+        "provider": "schema:provider",
+        "contactUrl": {
+            "@id": "dpp:contactUrl",
+            "@type": "@id"
+        },
+        "eprContact": "dpp:eprContact",
+        "wasteClassification": "dpp:wasteClassification",
+        "compliance": "dpp:compliance",
+        "complianceCertificates": {
+            "@id": "dpp:complianceCertificates",
+            "@container": "@list"
+        },
+        "certificateId": "dpp:certificateId",
+        "certificateType": "dpp:certificateType",
+        "issuer": "schema:issuer",
+        "issueDate": {
+            "@id": "schema:dateIssued",
+            "@type": "xsd:date"
+        },
+        "expiryDate": {
+            "@id": "schema:expires",
+            "@type": "xsd:date"
+        },
+        "certificateUrl": {
+            "@id": "dpp:certificateUrl",
+            "@type": "@id"
+        },
+        "verificationUrl": {
+            "@id": "dpp:verificationUrl",
+            "@type": "@id"
+        },
+        "testReportReferences": {
+            "@id": "dpp:testReportReferences",
+            "@container": "@list"
+        },
+        "reportId": "dpp:reportId",
+        "testStandard": "dpp:testStandard",
+        "labName": "dpp:labName",
+        "labAccreditation": "dpp:labAccreditation",
+        "testDate": {
+            "@id": "dpp:testDate",
+            "@type": "xsd:date"
+        },
+        "reportUrl": {
+            "@id": "dpp:reportUrl",
+            "@type": "@id"
+        },
+        "verifiableCredentials": {
+            "@id": "vc:verifiableCredential",
+            "@container": "@list"
+        },
+        "credentialSubject": "vc:credentialSubject",
+        "validFrom": {
+            "@id": "vc:validFrom",
+            "@type": "xsd:dateTime"
+        },
+        "validUntil": {
+            "@id": "vc:validUntil",
+            "@type": "xsd:dateTime"
+        },
+        "credentialStatus": "vc:credentialStatus",
+        "proof": "sec:proof",
+        "type": "@type",
+        "created": {
+            "@id": "sec:created",
+            "@type": "xsd:dateTime"
+        },
+        "proofPurpose": "sec:proofPurpose",
+        "verificationMethod": {
+            "@id": "sec:verificationMethod",
+            "@type": "@id"
+        },
+        "proofValue": "sec:proofValue",
+        "conformityDeclaration": "dpp:conformityDeclaration",
+        "declarationUrl": {
+            "@id": "dpp:declarationUrl",
+            "@type": "@id"
+        },
+        "euDeclarationNumber": "dpp:euDeclarationNumber",
+        "harmonizedStandards": "dpp:harmonizedStandards",
+        "consumerInformation": "dpp:consumerInformation",
+        "userManualUrl": {
+            "@id": "dpp:userManualUrl",
+            "@type": "@id"
+        },
+        "safetyInstructions": "schema:safetyConsideration",
+        "customerSupport": "schema:contactPoint",
+        "chatUrl": {
+            "@id": "dpp:chatUrl",
+            "@type": "@id"
+        },
+        "marketingClaims": {
+            "@id": "dpp:marketingClaims",
+            "@container": "@list"
+        },
+        "claim": "dpp:claim",
+        "substantiation": "dpp:substantiation",
+        "metadata": "dpp:metadata",
+        "resolverUrl": {
+            "@id": "dpp:resolverUrl",
+            "@type": "@id"
+        },
+        "registryEntryId": "dpp:registryEntryId",
+        "euDppRegistryUrl": {
+            "@id": "dpp:euDppRegistryUrl",
+            "@type": "@id"
+        },
+        "storageLocation": "dpp:storageLocation",
+        "storageProvider": "dpp:storageProvider",
+        "accessRightsMetadata": "dpp:accessRightsMetadata",
+        "publicFields": "dpp:publicFields",
+        "restrictedFields": "dpp:restrictedFields",
+        "regulatorAccessFields": "dpp:regulatorAccessFields",
+        "authenticationMethod": "dpp:authenticationMethod",
+        "availabilityGuarantee": "dpp:availabilityGuarantee",
+        "formatAndOntology": "dpp:formatAndOntology",
+        "schemaVersion": "schema:schemaVersion",
+        "lastUpdated": {
+            "@id": "schema:dateModified",
+            "@type": "xsd:dateTime"
+        },
+        "dataQuality": "dpp:dataQuality",
+        "completeness": {
+            "@id": "dpp:completeness",
+            "@type": "xsd:decimal"
+        },
+        "accuracy": "dpp:accuracy",
+        "lastAuditDate": {
+            "@id": "dpp:lastAuditDate",
+            "@type": "xsd:date"
+        },
+        "interoperability": "dpp:interoperability",
+        "gs1Compatible": {
+            "@id": "dpp:gs1Compatible",
+            "@type": "xsd:boolean"
+        },
+        "epcisVersion": "dpp:epcisVersion",
+        "catenaxCompatible": {
+            "@id": "dpp:catenaxCompatible",
+            "@type": "xsd:boolean"
+        },
+        "pactCompliant": {
+            "@id": "dpp:pactCompliant",
+            "@type": "xsd:boolean"
+        }
     }
-  }
 }
